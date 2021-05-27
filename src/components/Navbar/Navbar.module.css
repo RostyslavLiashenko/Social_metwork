@@ -1,0 +1,14 @@
+.navbar {
+    grid-area: nav;
+    background: coral;
+}
+.nav {
+    padding: 20px;
+}
+.item a:link {
+    text-decoration: none;
+    color: #fff;
+}
+.active {
+    color: gold;
+}

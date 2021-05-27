@@ -1,0 +1,5 @@
+.formSummaryError {
+    display: inline-block;
+    color: darkred;
+    border: 2px solid darkred;
+}
