@@ -31,7 +31,7 @@ export const CreateField = (component, validate, name, type, placeholder, props=
             <Field
                 component={component}
                 validate={validate}
-                name={[name]}
+                name={name}
                 type={type}
                 placeholder={placeholder}
                 {...props}

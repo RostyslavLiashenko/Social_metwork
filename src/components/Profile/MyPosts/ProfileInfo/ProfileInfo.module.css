@@ -1,3 +1,8 @@
 .descriptionBlock {
     padding: 10px;
 }
+.formSummaryError {
+    display: inline-block;
+    color: darkred;
+    border: 2px solid darkred;
+}

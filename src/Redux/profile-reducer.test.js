@@ -8,13 +8,14 @@ let initialState = {
         {message: "It's my first post", likes: 20, id: 15, photo: {userIcon}},
     ]
 }
+describe( 'test adding post', () =>
 test('length of posts must be increasing', () => {
     // 2. action
     const action = addPostCreator('this a new message from test')
     let newState = profileReducer(initialState, action)
     // 3. what do we expect
     expect(newState.userPosts.length).toBe(3)
-})
+}))
 test('message is the same what we passed to the function', () => {
     let action = addPostCreator('New text is passed')
     let newState = profileReducer(initialState, action)

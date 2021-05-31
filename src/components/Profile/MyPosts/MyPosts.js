@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import classes from './MyPosts.module.css';
 import Post from './Post/Post';
 import {Field, reduxForm} from "redux-form";
@@ -29,6 +29,11 @@ const MyPosts = props => {
         props.addPost(values.postText)
         values.postText = ''
     }
+   /* const [photo, setPhoto] = useState(props.userPosts[0].photo)
+    useEffect(() => {
+        setPhoto(props.userPosts[0].photo)
+    }, [props.userPosts[0].photo])*/
+
     let postsElements = props.userPosts.map(el => <Post photo={el.photo} message={el.message} key={el.id} likes={el.likes} id={el.id}/>)
     return (
         <div className={classes.postsBlock}>

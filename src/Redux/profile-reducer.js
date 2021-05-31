@@ -1,10 +1,12 @@
 import {profileApi} from "../api/api";
 import userIcon from '../assets/users_images/user-male.png'
+import {stopSubmit} from "redux-form";
 
 const ADD_POST = 'ADD-POST'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_STATUS = 'SET_STATUS'
 const DELETE_USER = 'DELETE_USER'
+const SET_PHOTO = 'SET_PHOTO'
 
 const initialState = {
     userPosts: [
@@ -12,7 +14,7 @@ const initialState = {
         {message: "It's my first post", likes: 20, id: 15, photo: userIcon},
     ],
     user: null,
-    status: ''
+    status: '',
 }
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -31,13 +33,27 @@ const profileReducer = (state = initialState, action) => {
         case (SET_STATUS) : {
             return {
                 ...state,
-                status: action.status
+                status: action.status,
             }
         }
         case (DELETE_USER) : {
             return {
                 ...state,
                 userPosts: [...state.userPosts].filter(el => el.id !== action.postId)
+            }
+        }
+        case (SET_PHOTO) : {
+            const newUserPosts = state.userPosts.map(post => ({
+                message: post.message,
+                likes: post.likes,
+                id: post.id,
+                photo: action.file
+            }));
+
+            return {
+                ...state,
+                user: {...state.user, photos: action.file},
+                userPosts: [...newUserPosts],
             }
         }
         default:
@@ -49,6 +65,7 @@ export const addPostCreator = (newText) => ({type: ADD_POST, newText})
 export const deletePostCreator = (postId) => ({type: DELETE_USER, postId})
 export const setUserProfile = (user) => ({type: SET_USER_PROFILE, user})
 export const setStatus = (status) => ({type: SET_STATUS, status})
+export const savePhoto = (file) => ({type: SET_PHOTO, file})
 
 export const getProfile = (userId) => {
     return async (dispatch) => {
@@ -67,6 +84,26 @@ export const updateUserStatus = (status, userId) => {
         profileApi.updateStatus(status, userId).then(res => {
         if (res.data.resultCode === 0)
             dispatch(setStatus(status))})
+    }
+}
+export const addPhoto = (filePhoto) => {
+    return async (dispatch) => {
+        let res = await profileApi.setPhoto(filePhoto)
+        if (res.data.resultCode === 0) {
+            dispatch(savePhoto(res.data.data.photos.large))
+        }
+    }
+}
+export const saveProfile = (profile) => {
+    return async (dispatch, getState) => {
+        const userId = getState().auth.userId
+        const res = await profileApi.setProfileData(profile)
+        if (res.data.resultCode === 0) {
+            dispatch(getProfile(userId))
+        } else {
+            dispatch(stopSubmit('edit-profile', {_error: res.data.messages[0]}))
+            return Promise.reject(res.data.messages[0])
+        }
     }
 }
 export default profileReducer;
