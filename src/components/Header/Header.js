@@ -2,17 +2,32 @@ import React from 'react';
 import classes from './Header.module.css';
 import {Link} from "react-router-dom";
 import Preloader from "../Common/Preloader/Preloader";
+import logoPhoto from '../../assets/logo2.png'
 
 const Header = (props) => {
     return (
         <header className={classes.header}>
+            <Link to='/profile'>
             <img
-                src="https://image.flaticon.com/icons/png/128/174/174851.png"
+                src={logoPhoto}
                 alt="logo"
-                width='60px'/>
+                width="140px"
+                />
+            </Link>
                 <div className={classes.loginBlock}>
                     {props.isFetching ? <Preloader /> : ''}
-                    {props.isAuth ? <div>{props.login} <button onClick={props.logout}>log out</button></div> : <Link to={'/login'}>login</Link>}
+                    {props.isAuth ? <div className={classes.authBlock}>
+                        <div className={classes.name}>
+                            {props.login}
+                        </div>
+                        <div className={classes.buttons}>
+                            <div className={classes.container}>
+                                <button className={`${classes.btn} ${classes.effect01}`} onClick={props.logout}><span>log out</span></button>
+                            </div>
+                        </div>
+                        </div> :
+                        <Link className={classes.btnLogin} to='/login'>login</Link>
+                    }
                 </div>
         </header>
     )

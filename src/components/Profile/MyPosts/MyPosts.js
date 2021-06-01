@@ -4,7 +4,6 @@ import Post from './Post/Post';
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, minLengthCreator, required} from "../../../helpers/validators";
 import {Textarea} from "../../Common/FormControls/FormControls";
-import iconUser from '../../../assets/users_images/userPhoto.jpg'
 
 const maxLength10 = maxLengthCreator(10);
 const minLength1 = minLengthCreator(3);

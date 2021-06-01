@@ -1,13 +1,23 @@
 .navbar {
     grid-area: nav;
-    background: coral;
+    background: #d6d6d6;
 }
 .nav {
-    padding: 20px;
+    padding-top: 20px;
+    padding-left: 30px;
 }
-.item a:link {
+.item {
+    padding-bottom: 10px;
+}
+.item a:link, .item a:visited {
     text-decoration: none;
-    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #212123;
+    letter-spacing: 1px;
+}
+.item a:hover {
+    color: #616063;
 }
 .active {
     color: gold;

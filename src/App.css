@@ -1,14 +1,14 @@
 .app-wrapper {
-    max-width: 1260px;
+    max-width: 1920px;
     margin: 0 auto;
     display: grid;
     grid-template-areas: "header header"
                          "nav content";
-    grid-template-rows: 60px 1fr;
+    grid-template-rows: 80px 1fr;
     grid-template-columns: 2fr 10fr;
 }
 
 .app-wrapper-content {
     grid-area: content;
-    background: cadetblue;
+    background: #fff;
 }

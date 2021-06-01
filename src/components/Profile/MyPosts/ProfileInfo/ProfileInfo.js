@@ -34,6 +34,11 @@ const ProfileInfo = ({user, status, updateUserStatus, isOwner, addPhoto, savePro
 };
 
 export const ProfileData = ({user, isOwner, goToEditMode}) => {
+    let some = Object.entries(user.contacts).map(([key, value]) => {
+        return (<div className={classes.contact} key={key}>
+                            <b>{key}:</b> {value}
+                       </div>)
+    })
     return (
         <div className={classes.aboutMe}>
             {isOwner && <div>
@@ -44,20 +49,13 @@ export const ProfileData = ({user, isOwner, goToEditMode}) => {
                 <b>Full name: </b>{user.fullName}
             </div>
             <div>
-                <b>I'm looking for a new job: </b>{user.lookingForAJob ? 'yes' : 'no'}
-            </div>
-            <div>
                 <b>About me: </b>{user.aboutMe}
             </div>
             <div>
                 <b>I'm looking for a new job: </b>{user.lookingForAJobDescription}
             </div>
             <div className={classes.contacts}>Contacts: <br/>
-                {Object.keys(user.contacts).map(key => {
-                    return <div className={classes.contact} key={key}>
-                        <b>{key}:</b> {key[key]}
-                    </div>
-                })}
+                {some}
             </div>
         </div>
     )
