@@ -1,5 +1,5 @@
 import {profileApi} from "../api/api";
-import userIcon from '../assets/users_images/user-male.png'
+import userIcon from '../assets/users_images/userPhoto.jpg'
 import {stopSubmit} from "redux-form";
 
 const ADD_POST = 'ADD-POST'
@@ -21,13 +21,20 @@ const profileReducer = (state = initialState, action) => {
         case (ADD_POST) : {
             return {
                 ...state,
-                userPosts: [...state.userPosts, {message: action.newText, likes: 25, id: 20, photo: userIcon}],
+                userPosts: [...state.userPosts, {message: action.newText, likes: 0, id: Math.trunc(Math.random() * 100), photo: state.userPosts[0].photo}],
             }
         }
         case (SET_USER_PROFILE) : {
+            const newUserPosts = state.userPosts.map(post => ({
+                message: post.message,
+                likes: post.likes,
+                id: post.id,
+                photo: action.user.photos.small
+            }))
             return {
                 ...state,
                 user: action.user,
+                userPosts: [...newUserPosts]
             }
         }
         case (SET_STATUS) : {
@@ -49,7 +56,6 @@ const profileReducer = (state = initialState, action) => {
                 id: post.id,
                 photo: action.file
             }));
-
             return {
                 ...state,
                 user: {...state.user, photos: action.file},
@@ -79,11 +85,12 @@ export const getUserStatus = (userID) => {
         dispatch(setStatus(res.data))
     }
 }
-export const updateUserStatus = (status, userId) => {
+export const updateUserStatus = (status) => {
     return (dispatch) => {
-        profileApi.updateStatus(status, userId).then(res => {
-        if (res.data.resultCode === 0)
-            dispatch(setStatus(status))})
+        profileApi.updateStatus(status).then(res => {
+            if (res.data.resultCode === 0)
+                dispatch(setStatus(status))
+        })
     }
 }
 export const addPhoto = (filePhoto) => {

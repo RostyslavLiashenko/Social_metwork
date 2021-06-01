@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import classes from './ProfileInfo.module.css';
 import Preloader from "../../../Common/Preloader/Preloader";
 import ProfileStatus from "./ProfileStatus";
-import iconUser from '../../../../assets/users_images/user-male.png'
+import iconUser from '../../../../assets/users_images/userPhoto.jpg'
 import ProfileDataFormRedux from "./ProfileDataForm";
 
 const ProfileInfo = ({user, status, updateUserStatus, isOwner, addPhoto, saveProfile}) => {
@@ -21,13 +21,13 @@ const ProfileInfo = ({user, status, updateUserStatus, isOwner, addPhoto, savePro
     return (
         <div>
             <div className={classes.descriptionBlock}>
-                <img src={user.photos.large || user.photos || iconUser} alt="ava photo"/>
+                <img src={user.photos.large ?? user.photos ?? iconUser} alt="avatar"/>
                 {isOwner && <div>
                     <input type="file" onChange={onMainPhotoChange}/>
                 </div>}
                 {editMode ? <ProfileDataFormRedux initialValues={user} user={user} onSubmit={onSubmit}/>
                     : <ProfileData isOwner={isOwner} user={user} goToEditMode={() => setEditMode(true)}/>}
-                <ProfileStatus status={status} updateUserStatus={updateUserStatus}/>
+                <ProfileStatus isOwner={isOwner} status={status} updateUserStatus={updateUserStatus}/>
             </div>
         </div>
     )

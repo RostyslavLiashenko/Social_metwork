@@ -13,11 +13,12 @@ const Users = (props) => {
                 portionSize={props.portionSize}
             />
             {props.users.map(user => <User
-                    user={user}
-                    followingInProgress={props.followingInProgress}
-                    follow={props.follow}
-                    unfollow={props.unfollow}
-                />)}
+                key={user.id}
+                user={user}
+                followingInProgress={props.followingInProgress}
+                follow={props.follow}
+                unfollow={props.unfollow}
+            />)}
         </div>
     )
 }

@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import classes from './MyPosts.module.css';
 import Post from './Post/Post';
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, minLengthCreator, required} from "../../../helpers/validators";
 import {Textarea} from "../../Common/FormControls/FormControls";
+import iconUser from '../../../assets/users_images/userPhoto.jpg'
 
 const maxLength10 = maxLengthCreator(10);
 const minLength1 = minLengthCreator(3);
@@ -26,14 +27,10 @@ const PostReduxForm = reduxForm({
 })(PostForm)
 const MyPosts = props => {
     const addPost = (values) => {
+        if (values.postText)
         props.addPost(values.postText)
         values.postText = ''
     }
-   /* const [photo, setPhoto] = useState(props.userPosts[0].photo)
-    useEffect(() => {
-        setPhoto(props.userPosts[0].photo)
-    }, [props.userPosts[0].photo])*/
-
     let postsElements = props.userPosts.map(el => <Post photo={el.photo} message={el.message} key={el.id} likes={el.likes} id={el.id}/>)
     return (
         <div className={classes.postsBlock}>

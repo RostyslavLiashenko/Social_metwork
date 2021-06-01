@@ -8,11 +8,12 @@ const ProfileStatus = (props) => {
         setStatus(props.status)
     }, [props.status])
     const activateEditMode = () => {
+        if (props.isOwner)
         setEditMode(() => true)
     }
     const deactivateEditMode = () => {
         setEditMode(() => false)
-        props.updateUserStatus(status, 2)
+        props.updateUserStatus(status)
     }
     const onStatusChange = (e) => {
         setStatus(e.target.value)

@@ -2,7 +2,7 @@ import React, {Suspense} from 'react';
 import './App.css';
 import Navbar from "./components/Navbar/Navbar";
 import UsersContainer from "./components/users/usersContainer";
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 import {initializeApp} from './Redux/app-reducer';
@@ -16,8 +16,16 @@ const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsCo
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'))
 
 class App extends React.Component {
+    catchAllUnHandleErrors(event) {
+        alert('Some error occurred')
+        console.log(event.reason, event.promise)
+    }
     componentDidMount() {
         this.props.initializeApp()
+        window.addEventListener('unhandledrejection', this.catchAllUnHandleErrors)
+    }
+    componentWillUnmount() {
+        window.removeEventListener('unhandledrejection', this.catchAllUnHandleErrors)
     }
 
     render() {
@@ -33,10 +41,17 @@ class App extends React.Component {
                 <div className="app-wrapper-content">
                     <Suspense fallback={<div>loading...</div>}>
                         <Switch>
+
                             <Route path="/profile/:userId?" component={ProfileContainer}/>
                             <Route path="/dialogs" component={DialogsContainer}/>
                             <Route path="/users" component={UsersContainer}/>
                             <Route path="/login" component={Login}/>
+                            <Route exact path='/'>
+                                <Redirect to='/profile' />
+                            </Route>
+                            <Route path="*">
+                                <div>404 NOT FOUND</div>
+                            </Route>
                         </Switch>
                     </Suspense>
                 </div>
