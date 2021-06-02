@@ -1,6 +1,6 @@
 import React, {Suspense} from 'react';
 import './App.css';
-import Navbar from "./components/Navbar/Navbar";
+import NavBarContainer from "./components/Navbar/SidebarContainer";
 import UsersContainer from "./components/users/usersContainer";
 import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
 import HeaderContainer from "./components/Header/HeaderContainer";
@@ -35,9 +35,7 @@ class App extends React.Component {
         return (
             <div className="app-wrapper">
                 <HeaderContainer/>
-                <Navbar
-                    sidebar={this.props.appState.sidebar}
-                />
+                <NavBarContainer/>
                 <div className="app-wrapper-content">
                     <Suspense fallback={<div>loading...</div>}>
                         <Switch>
@@ -76,7 +74,7 @@ const AppContainer = () => {
     return (
         <Router>
             <Provider store={store}>
-                <AppConnect appState={store.getState.call(store)}/>
+                <AppConnect/* appState={store.getState.call(store)}*//>
             </Provider>
         </Router>
     )

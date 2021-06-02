@@ -1,8 +1,8 @@
 import React, {Fragment} from "react";
 import classes from './Friends.module.css';
 
-const friends = props => {
-    let person = props.sidebar.map(person => {
+const friends = ({friends}) => {
+    let person = friends.map(person => {
         return (
             <div className={classes.person} key={person.id}>
                 <img src={person.source}

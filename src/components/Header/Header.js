@@ -26,7 +26,7 @@ const Header = (props) => {
                             </div>
                         </div>
                         </div> :
-                        <Link className={classes.btnLogin} to='/login'>login</Link>
+                        <Link className={`${classes.btnLogin} ${classes.effect01}`} to='/login'><span>login</span></Link>
                     }
                 </div>
         </header>

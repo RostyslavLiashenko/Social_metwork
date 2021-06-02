@@ -11,7 +11,7 @@ import appReducer from "./app-reducer";
 let reducer = combineReducers({
     profilePage: profileReducer,
     dialogsPage: dialogsReducer,
-    sidebar: sidebarReducer,
+    sidebarPage: sidebarReducer,
     usersPage: usersReducer,
     auth: authReducer,
     app: appReducer,
