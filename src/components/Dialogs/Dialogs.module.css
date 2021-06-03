@@ -1,16 +1,92 @@
 .dialogs {
     display: grid;
     grid-template-columns: 2fr 1fr;
+    max-width: 800px;
+    margin: 2em auto;
 }
-.dialogsItems {
-    padding: 10px;
+.dialogsItems:first-child {
+    border-right: 3px solid #2b3120;
+    margin-right: 40%;
 }
-.dialogsItems .active {
-    color: gold;
+.user {
+    padding-top: 10px;
 }
-.messages {
-    padding: 10px;
+.user img {
+    max-width: 50px;
+    border-radius: 50%;
+}
+.user a {
+    display: inline-block;
+    vertical-align: 90%;
+    padding-left: 15px;
+    text-decoration: none;
+    color: #2b3120;
+    font-weight: 600;
+    font-size: 1.05em;
 }
 .message {
+    padding-bottom: 5px;
+}
+.message button {
+    border: none;
+    cursor: pointer;
+    background: none;
+    padding-left: 10px;
+    color: rgba(0, 0, 0, 0.5);
+    transition: .2s ease-in;
+}
+.message span {
+    font-weight: 600;
+    color: #2b3120;
+    font-size: 1.1em;
+}
+.message button:hover {
+    transform: scale(1.2);
+    color: #000;
+    font-weight: 600;
+}
+.form {
+    margin-top: 10px;
+    max-width: 200px;
+    padding: 10px;
+    font-size: 1em;
+    outline:none;
+    background: linear-gradient(to left top, #000, #2b3120) fixed;
+    border-radius: 10px;
+    border: 2px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.8);
+    transition: all 0.5s;
+}
 
+.form:hover {
+    border: 2px solid rgba(255,255,255,0.5);
+}
+.form:focus {
+    border: 2px solid rgba(255,255,255,0.5);
+    background: linear-gradient(to left top, #000, #11bb32) fixed;
+}
+
+.button {
+    max-width: 120px;
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    font-size: .9em;
+    font-weight:bold;
+    cursor: pointer;
+    outline:none;
+    background: linear-gradient(to left top, #000, #2b3120) fixed;
+    border-radius: 10px;
+    border: 5px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.9);
+    transition: all 0.5s;
+}
+
+.button:hover {
+    border: 5px solid rgba(255,255,255,0.5);
+    background: linear-gradient(to left top, #000, #11bb32) fixed;
+}
+
+.button:focus {
+    background: linear-gradient(to left top, #11bb32, #000) fixed;
 }

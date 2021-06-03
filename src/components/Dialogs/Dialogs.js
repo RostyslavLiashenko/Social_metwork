@@ -1,25 +1,26 @@
 import React from 'react';
 import classes from './Dialogs.module.css';
-import DialogItem from "./DialogItem/DialogItem";
+import UserItem from "./UserItem/UserItem";
 import Message from './Message/Message';
 import {Field, reduxForm} from "redux-form";
-import {Textarea} from "../Common/FormControls/FormControls";
+import {Input} from "../Common/FormControls/FormControls";
 import {maxLengthCreator, minLengthCreator, required} from "../../helpers/validators";
 
-const maxLength50 = maxLengthCreator(50);
-const minLength2 = minLengthCreator(2);
+const maxLength30 = maxLengthCreator(30);
+const minLength1 = minLengthCreator(1);
 const MessageForm = props => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field component={Textarea}
-                       validate={[required, maxLength50, minLength2]}
+                <Field component={Input}
+                       validate={[required, maxLength30, minLength1]}
                        name='newMessageBody'
                        placeholder='Enter your message'
+                       className={classes.form}
                 />
             </div>
             <div>
-                <button>send</button>
+                <button className={classes.button}>send</button>
             </div>
         </form>
     )
@@ -30,26 +31,31 @@ const MessageReduxForm = reduxForm({
 })(MessageForm)
 
 const Dialogs = props => {
+    const userId = parseInt(props.history.location.pathname.slice(-1))
     const addMessage = (values) => {
-        props.onSendMessageClick(values.newMessageBody)
+        if (!values.newMessageBody) return
+        props.onSendMessageClick(values.newMessageBody, userId)
         values.newMessageBody = ''
+    }
+    const onDeleteMessage = (numMsg, userId) => {
+        props.onDeleteMessageClick(numMsg, userId)
     }
     return (
         <div className={classes.dialogs}>
             <div className={classes.dialogsItems}>
-                {props.dialogsPage.personsData.map(person => {
+                {props.usersData.map(person => {
                     return (
-                        <DialogItem name={person.name} id={person.id} key={person.id}/>
+                        <UserItem photo={person.photo} name={person.name} id={person.id} key={person.id}/>
                     )
                 })}
             </div>
-            <div className={classes.messages}>
-                <div>{props.dialogsPage.messagesData.map(el => {
-                    return <Message msg={el.messages} id={el.id} key={el.id}/>
+            <div className={classes.dialogsItems}>
+                <div>{props.usersData[userId - 1]?.messages.map((el, index) => {
+                    return <Message messages={el} key={index} userId={userId} numMsg={index} deleteMessage={onDeleteMessage}/>
                 })}</div>
-                <div>
-                    <MessageReduxForm onSubmit={addMessage}/>
-                </div>
+                 <div>
+                     {userId ? <MessageReduxForm onSubmit={addMessage}/> : ''}
+                 </div>
             </div>
         </div>
     )

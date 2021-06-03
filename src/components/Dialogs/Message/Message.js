@@ -1,10 +1,13 @@
 import React from 'react';
 import classes from "../Dialogs.module.css";
 
-const message = props => {
+const Message = (props) => {
     return (
-        <div className={classes.message} id={props.id}>{props.msg}</div>
+        <div className={classes.message}>
+            <span>{props.numMsg + 1}. {props.messages}</span>
+            <button onClick={() => props.deleteMessage(props.numMsg, props.userId)}>X</button>
+        </div>
     )
 }
 
-export default message;
+export default Message;

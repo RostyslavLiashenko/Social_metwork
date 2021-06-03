@@ -11,6 +11,7 @@ import {compose} from "redux";
 import {withRouter} from "react-router";
 import Preloader from "./components/Common/Preloader/Preloader";
 import store from './Redux/redux-store'
+import SettingsContainer from "./components/Settings/SettingsContainer";
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'))
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'))
@@ -39,13 +40,13 @@ class App extends React.Component {
                 <div className="app-wrapper-content">
                     <Suspense fallback={<div>loading...</div>}>
                         <Switch>
-
+                            <Route path="/settings" component={SettingsContainer}/>
                             <Route path="/profile/:userId?" component={ProfileContainer}/>
                             <Route path="/dialogs" component={DialogsContainer}/>
                             <Route path="/users" component={UsersContainer}/>
                             <Route path="/login" component={Login}/>
                             <Route exact path='/'>
-                                <Redirect to='/profile' />
+                                <Redirect to='/profile'/>
                             </Route>
                             <Route path="*">
                                 <div>404 NOT FOUND</div>

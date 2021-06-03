@@ -1,3 +1,4 @@
+/*
 import profileReducer from "./profile-reducer";
 import dialogsReducer from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
@@ -37,10 +38,10 @@ let store = {
         ],
         usersPage: {
             users: [
-                /* {id: 1, following: false, fullName: 'Dmitriy', status: 'I am a boss mother fucker', location: {city: 'Minsk', country: 'Belarus'}},
+                /!* {id: 1, following: false, fullName: 'Dmitriy', status: 'I am a boss mother fucker', location: {city: 'Minsk', country: 'Belarus'}},
                  {id: 2, following: true, fullName: 'Nadya', status: 'I am a boss too', location: {city: 'Kyiv', country: 'Ukraine'}},
                  {id: 3, following: true, fullName: 'Bodya', status: 'I am a boss joj', location: {city: 'Bratislava', country: 'Slovakia'}},
-                 {id: 4, following: false, fullName: 'Yura', status: 'I am a nice boss', location: {city: 'Moscow', country: 'Russia'}},*/
+                 {id: 4, following: false, fullName: 'Yura', status: 'I am a nice boss', location: {city: 'Moscow', country: 'Russia'}},*!/
             ],
             usersOnPage: 5,
             totalUsers: 20,
@@ -65,4 +66,4 @@ let store = {
     }
 }
 
-export default store;
+export default store;*/

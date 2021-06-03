@@ -5,7 +5,7 @@ import Friends from './Friends/Friends';
 import profileIcon from '../../assets/users_images/userPhoto.jpg'
 import messageIcon from '../../assets/sidebar/email.jpg'
 import usersIcon from '../../assets/sidebar/users.png'
-import newsIcon from '../../assets/sidebar/news.jpg'
+import newsIcon from '../../assets/sidebar/news.png'
 import musicIcon from '../../assets/sidebar/music.png'
 import settingsIcon from '../../assets/sidebar/settings.png'
 
@@ -44,7 +44,8 @@ const Sidebar = ({friends, activeUrl}) => {
                             <span>Music</span>
                         </div>
                     </Link>
-                    <Link className={activeUrl === '/settings' ? `${classes.item} ${classes.active}` : `${classes.item}`} to="/settings">
+                    <Link className={activeUrl === '/settings' ? `${classes.item} ${classes.active}` : `${classes.item}`}
+                          to="/settings">
                         <div className={classes.itemContainer}>
                             <img className={classes.sidebarIcon} src={settingsIcon} alt="settings"/>
                             <span>Settings</span>
