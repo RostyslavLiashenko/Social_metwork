@@ -4,10 +4,10 @@ import React from "react";
 
 const UserItem = (props) => {
     return (
-        <div className={`${classes.user}`}>
+        <Link to={`/dialogs/${props.id}`} className={`${classes.user}`}>
             <img src={props.photo} alt="user"/>
-            <Link to={`/dialogs/${props.id}`}>{props.name}</Link>
-        </div>
+            <span>{props.name}</span>
+        </Link>
     )
 };
 export default UserItem;

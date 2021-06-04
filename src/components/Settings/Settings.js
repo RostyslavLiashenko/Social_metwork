@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import classes from './Settings.module.css';
-import Preloader from "../Common/Preloader/Preloader";
 import ProfileDataFormRedux from "../Profile/MyPosts/ProfileInfo/ProfileDataForm";
+import {Redirect} from "react-router-dom";
 
 const Settings = ({user, saveProfile, path}) => {
     const [editMode, setEditMode] = useState(false)
-    if (!user) return <Preloader/>
+    if (!user) return <Redirect to='/profile'/>
     const onSubmit = (formData) => {
         saveProfile(formData).then(() => {
             setEditMode(false)

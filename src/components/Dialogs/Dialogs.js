@@ -50,12 +50,16 @@ const Dialogs = props => {
                 })}
             </div>
             <div className={classes.dialogsItems}>
-                <div>{props.usersData[userId - 1]?.messages.map((el, index) => {
-                    return <Message messages={el} key={index} userId={userId} numMsg={index} deleteMessage={onDeleteMessage}/>
-                })}</div>
-                 <div>
-                     {userId ? <MessageReduxForm onSubmit={addMessage}/> : ''}
-                 </div>
+                <div>
+                    <div className={classes.dialogHeader}>Dialog: </div>
+                    {props.usersData[userId - 1]?.messages.map((el, index) => {
+                        return <Message messages={el} key={index} userId={userId} numMsg={index}
+                                        deleteMessage={onDeleteMessage}/>
+                    })}
+                </div>
+                <div>
+                    {userId ? <MessageReduxForm onSubmit={addMessage}/> : ''}
+                </div>
             </div>
         </div>
     )

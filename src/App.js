@@ -12,6 +12,7 @@ import {withRouter} from "react-router";
 import Preloader from "./components/Common/Preloader/Preloader";
 import store from './Redux/redux-store'
 import SettingsContainer from "./components/Settings/SettingsContainer";
+import NotFound from "./components/Common/NotFound404/NotFound";
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'))
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'))
@@ -49,7 +50,7 @@ class App extends React.Component {
                                 <Redirect to='/profile'/>
                             </Route>
                             <Route path="*">
-                                <div>404 NOT FOUND</div>
+                                <NotFound />
                             </Route>
                         </Switch>
                     </Suspense>

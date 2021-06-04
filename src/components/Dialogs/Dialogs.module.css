@@ -1,29 +1,46 @@
 .dialogs {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    max-width: 800px;
+    grid-template-columns: 3fr 1fr;
+    max-width: 700px;
     margin: 2em auto;
 }
 .dialogsItems:first-child {
+    margin-left: 5px;
+    padding: 15px 0 0 30px;
     border-right: 3px solid #2b3120;
-    margin-right: 40%;
+    border-radius: 20px;
+    background: #d6d6d6;
+    margin-right: 100px;
+    display: flex;
+    flex-direction: column;
+}
+.dialogHeader {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin: 10px;
 }
 .user {
-    padding-top: 10px;
-}
-.user img {
-    max-width: 50px;
-    border-radius: 50%;
-}
-.user a {
-    display: inline-block;
-    vertical-align: 90%;
-    padding-left: 15px;
+    display: flex;
+    justify-content: flex-start;
+    max-width: 220px;
+    align-items: center;
+    padding: 5px;
+    margin: 0 5px 15px 0;
     text-decoration: none;
     color: #2b3120;
     font-weight: 600;
     font-size: 1.05em;
 }
+.user:hover, .user:focus {
+    background: #fff;
+    border-radius: 15px;
+}
+.user img {
+    max-width: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
 .message {
     padding-bottom: 5px;
 }

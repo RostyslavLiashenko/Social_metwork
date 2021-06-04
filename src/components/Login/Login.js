@@ -6,14 +6,24 @@ import {login} from "../../Redux/auth-reducer";
 import {connect} from "react-redux";
 import {Redirect} from "react-router";
 import classes from './login.module.css';
+import s from '../Dialogs/Dialogs.module.css'
 
 const LoginForm = ({handleSubmit, error, captchaUrl}) => {
     return (
-        <form onSubmit={handleSubmit}>
-            {CreateField(Input, [required], 'email', 'email', 'email')}
-            {CreateField(Input, [required], 'password', 'password', 'password')}
-            <div>
+        <form onSubmit={handleSubmit} className={classes.formContainer}>
+            <div className={classes.inputBlock}>
+            <div>Email: </div>
+                {CreateField(Input, [required], 'email',
+                'email', 'email', `${s.form}`)}
+            </div>
+            <div className={classes.inputBlock}>
+            <div>Password: </div>
+                {CreateField(Input, [required], 'password',
+                'password', 'password', `${s.form}`)}
+            </div>
+            <div className={classes.rememberBlock}>
                 <Field component={Input}
+                       className={classes.boxes}
                        name={'rememberMe'}
                        id={'remember'}
                        type="checkbox"/>
@@ -21,13 +31,16 @@ const LoginForm = ({handleSubmit, error, captchaUrl}) => {
             </div>
             {captchaUrl && <div>
                 <img src={captchaUrl} alt="captcha"/>
-                {CreateField(Input, [required], 'captcha', 'text', 'symbols from image')}
+                <div>
+                {CreateField(Input, [required], 'captcha', 'text',
+                    'symbols from image', `${s.form}`)}
+                </div>
             </div>}
             {error && <p className={classes.formSummaryError}>
                 {error}
             </p>}
             <div>
-                <button>login</button>
+                <button className={s.button}>login</button>
             </div>
         </form>
     )
@@ -45,7 +58,7 @@ const Login = ({login, isAuth, user, captchaUrl}) => {
         return <Redirect to={'/profile'}/>
     }
     return (
-        <div>
+        <div className={classes.wrapper}>
             <h1>Login</h1>
             <LoginReduxForm initialValues={user} captchaUrl={captchaUrl} onSubmit={addUser}/>
         </div>

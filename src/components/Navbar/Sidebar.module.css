@@ -1,6 +1,11 @@
 .sidebar {
     grid-area: nav;
     background: #d6d6d6;
+    margin-top: -80px;
+    min-height: 100vh;
+}
+.nav {
+    margin-top: 80px;
 }
 .item {
     max-width: 150px;

@@ -1,7 +1,6 @@
 import React, {Fragment} from 'react';
 import classes from './Sidebar.module.css';
 import {Link} from 'react-router-dom';
-import Friends from './Friends/Friends';
 import profileIcon from '../../assets/users_images/userPhoto.jpg'
 import messageIcon from '../../assets/sidebar/email.jpg'
 import usersIcon from '../../assets/sidebar/users.png'
@@ -9,11 +8,11 @@ import newsIcon from '../../assets/sidebar/news.png'
 import musicIcon from '../../assets/sidebar/music.png'
 import settingsIcon from '../../assets/sidebar/settings.png'
 
-const Sidebar = ({friends, activeUrl}) => {
+const Sidebar = ({activeUrl}) => {
     return (
         <Fragment>
             <div className={classes.sidebar}>
-                <nav>
+                <nav className={classes.nav}>
                     <Link className={activeUrl === '/profile' ? `${classes.item} ${classes.active}` : `${classes.item}`} to="/profile">
                         <div className={classes.itemContainer}>
                             <img className={classes.sidebarIcon} src={profileIcon} alt="profile"/>
@@ -52,7 +51,6 @@ const Sidebar = ({friends, activeUrl}) => {
                         </div>
                     </Link>
                 </nav>
-                <Friends friends={friends}/>
             </div>
         </Fragment>
     )
