@@ -1,10 +1,11 @@
 import React from 'react';
 import Pagination from "../Common/Pagination/Pagination";
 import User from "./User";
+import classes from './user.module.css'
 
 const Users = (props) => {
     return (
-        <div>
+        <div className={classes.usersContainer}>
             <Pagination
                 totalItemsCount={props.totalItemsCount}
                 itemsPerPage={props.itemsPerPage}

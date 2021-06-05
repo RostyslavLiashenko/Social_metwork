@@ -14,15 +14,15 @@ const ProfileInfo = ({user, status, updateUserStatus, isOwner, addPhoto}) => {
         }
     }
     return (
-        <div>
-            <div className={classes.descriptionBlock}>
-                <img src={user.photos.large ?? user.photos ?? iconUser} alt="avatar"/>
-                {isOwner && <div>
-                    <input type="file" onChange={onMainPhotoChange}/>
-                </div>}
-                <ProfileStatus isOwner={isOwner} status={status} updateUserStatus={updateUserStatus}/>
-                <ProfileData user={user}/>
-            </div>
+        <div className={classes.descriptionBlock}>
+            <img src={user.photos.large ?? user.photos ?? iconUser}
+                 className={classes.userPhoto}
+                 alt="avatar"/>
+            {isOwner && <div>
+                <input type="file" onChange={onMainPhotoChange}/>
+            </div>}
+            <ProfileStatus isOwner={isOwner} status={status} updateUserStatus={updateUserStatus}/>
+            <ProfileData user={user}/>
         </div>
     )
 };

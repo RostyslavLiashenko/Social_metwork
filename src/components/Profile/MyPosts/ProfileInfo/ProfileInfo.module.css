@@ -6,3 +6,6 @@
     color: darkred;
     border: 2px solid darkred;
 }
+.userPhoto {
+    border-radius: 50%;
+}

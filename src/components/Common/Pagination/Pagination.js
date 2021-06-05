@@ -15,16 +15,20 @@ const Pagination = ({totalItemsCount, itemsPerPage, onPageChange, currentPage, p
     let rightPagePortionNumber = portionNumber * portionSize
 
    return (
-       <div>
-           {portionNumber > 1 && <button onClick={() => setPortionNumber(portionNumber - 1)}>left</button>}
+       <div className={classes.pagination}>
+           {portionNumber > 1 && <button className={classes.arrowBtn} onClick={() => setPortionNumber(portionNumber - 1)}>
+               &#129044;
+           </button>}
             {pages.filter(page => page >= leftPagePortionNumber && page <= rightPagePortionNumber)
                 .map(page => {
-                    return (<button
+                    return (<span
                         onClick={() => onPageChange(page)}
                         className={currentPage === page ?
-                            classes.selectedPage : ''} key={page}>{page}</button>)
+                            `${classes.selectedPage} ${classes.pageBtn}` : classes.pageBtn} key={page}>{page}</span>)
                 })}
-           {portionNumber < portionCount && <button onClick={() => setPortionNumber(portionNumber + 1)}>right</button>}
+           {portionNumber < portionCount && <button className={classes.arrowBtn} onClick={() => setPortionNumber(portionNumber + 1)}>
+               &#129046;
+           </button>}
         </div>
     )
 

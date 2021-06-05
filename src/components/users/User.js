@@ -5,33 +5,29 @@ import {Link} from "react-router-dom";
 
 const User = ({user, followingInProgress, follow, unfollow}) => {
     return (
-        <div key={user.id}>
-                <span>
-                    <div>
-                        <Link to={`/profile/${user.id}`}>
-                            <img src={user.photos.small ? user.photos.small : userPhoto}
-                                 className={classes.avatar}
-                                 alt="ava"/>
-                         </Link>
-                    </div>
-                </span>
-            <span>
+        <div key={user.id} className={classes.user}>
+                <div>
+                    <Link to={`/profile/${user.id}`}>
+                        <img src={user.photos.small ? user.photos.small : userPhoto}
+                             className={classes.avatar}
+                             alt="ava"/>
+                     </Link>
+                </div>
+
                 {!user.followed ?
-                    <button disabled={followingInProgress.some(id => id === user.id)} onClick={() => {
-                        follow(user.id)
-                    }}>follow</button> :
-                    <button disabled={followingInProgress.some(id => id === user.id)} onClick={() => {
-                        unfollow(user.id)
-                }}>unfollow</button>}
-            </span>
-            <span>
-                <span>
-                    <div>{user.name}</div><div>{user.status}</div>
-                </span>
-                <span>
-                    <div>{"user.location.country"}</div><div>{"user.location.city"}</div>
-                </span>
-            </span>
+                    <button className={`${classes.btn} ${classes.effect01}`}
+                            disabled={followingInProgress.some(id => id === user.id)}
+                            onClick={() => {follow(user.id)}}>
+                        <span>follow</span></button> :
+                    <button className={`${classes.btn} ${classes.effect01}`}
+                            disabled={followingInProgress.some(id => id === user.id)}
+                            onClick={() => {unfollow(user.id)}}>
+                        <span>unfollow</span></button>
+                }
+            <div>
+                <div><b>Name: </b>{user.name}</div>
+                {user.status && <div><b>Status: </b>{user.status}</div>}
+            </div>
         </div>
     )
 }
