@@ -17,7 +17,7 @@
     flex-direction: column;
 }
 .dialogHeader {
-    font-size: 1.1em;
+    font-size: 1.3em;
     font-weight: 600;
     margin: 10px;
 }
@@ -31,7 +31,7 @@
     text-decoration: none;
     color: #2b3120;
     font-weight: 600;
-    font-size: 1.05em;
+    font-size: 1.1em;
 }
 .user:hover, .user:focus {
     background: #fff;
@@ -66,7 +66,7 @@
     font-weight: 600;
 }
 .form {
-    margin-top: 10px;
+    margin-top: 5px;
     max-width: 200px;
     padding: 10px;
     font-size: 1em;
@@ -77,36 +77,10 @@
     color: rgba(255,255,255,0.8);
     transition: all 0.5s;
 }
-
 .form:hover {
     border: 2px solid rgba(255,255,255,0.5);
 }
 .form:focus {
     border: 2px solid rgba(255,255,255,0.5);
     background: linear-gradient(to left top, #000, #11bb32) fixed;
-}
-
-.button {
-    max-width: 120px;
-    width: 100%;
-    padding: 8px;
-    margin-top: 10px;
-    font-size: .9em;
-    font-weight:bold;
-    cursor: pointer;
-    outline:none;
-    background: linear-gradient(to left top, #000, #2b3120) fixed;
-    border-radius: 10px;
-    border: 5px solid rgba(255,255,255,0.2);
-    color: rgba(255,255,255,0.9);
-    transition: all 0.5s;
-}
-
-.button:hover {
-    border: 5px solid rgba(255,255,255,0.5);
-    background: linear-gradient(to left top, #000, #11bb32) fixed;
-}
-
-.button:focus {
-    background: linear-gradient(to left top, #11bb32, #000) fixed;
 }

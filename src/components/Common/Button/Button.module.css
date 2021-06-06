@@ -1,0 +1,24 @@
+.btn {
+    max-width: 120px;
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    font-size: .9em;
+    font-weight:bold;
+    cursor: pointer;
+    outline:none;
+    background: linear-gradient(to left top, #000, #2b3120) fixed;
+    border-radius: 10px;
+    border: 5px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.9);
+    transition: all 0.5s;
+}
+
+.btn:hover {
+    border: 5px solid rgba(255,255,255,0.5);
+    background: linear-gradient(to left top, #000, #11bb32) fixed;
+}
+
+.btn:focus {
+    background: linear-gradient(to left top, #11bb32, #000) fixed;
+}

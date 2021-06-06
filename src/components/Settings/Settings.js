@@ -1,7 +1,8 @@
 import React, {useState} from "react";
 import classes from './Settings.module.css';
-import ProfileDataFormRedux from "../Profile/MyPosts/ProfileInfo/ProfileDataForm";
+import ProfileDataFormRedux from './ProfileDataForm'
 import {Redirect} from "react-router-dom";
+import Button from "../Common/Button/Button";
 
 const Settings = ({user, saveProfile, path}) => {
     const [editMode, setEditMode] = useState(false)
@@ -12,7 +13,8 @@ const Settings = ({user, saveProfile, path}) => {
         })
     }
     return (
-        <div>
+        <div className={classes.settingsBlock}>
+            <div className={classes.settings}>Settings</div>
             {editMode ? <ProfileDataFormRedux initialValues={user} user={user} onSubmit={onSubmit}/>
                 : <ProfileData user={user} path={path} goToEditMode={() => setEditMode(true)}/>}
         </div>
@@ -25,23 +27,28 @@ export const ProfileData = ({user, goToEditMode, path}) => {
         </div>)
     })
     return (
-        <div className={classes.aboutMe}>
-            {user.userId === 16749 && path === '/settings' && <div>
-                <button onClick={goToEditMode}>edit</button>
-            </div>}
-            <p>Information: {user.aboutMe}</p>
-            <div>
-                <b>Full name: </b>{user.fullName}
+        <div className={classes.infoBlock}>
+            <div className={classes.mainInfo}>
+                <div className={classes.name}>
+                    <b>Name: </b>{user.fullName}
+                </div>
+                <div>
+                    <b>I'm looking for a new job: </b>{user.lookingForAJob ? 'yes' : 'no'}
+                </div>
+                <div>
+                    <b>About me: </b>{user.aboutMe}
+                </div>
+                <div>
+                    <b>Looking for a job description: </b>{user.lookingForAJobDescription}
+                </div>
             </div>
-            <div>
-                <b>About me: </b>{user.aboutMe}
-            </div>
-            <div>
-                <b>I'm looking for a new job: </b>{user.lookingForAJobDescription}
-            </div>
-            <div className={classes.contacts}>Contacts: <br/>
+            <div className={classes.contacts}>
+                <span>Contacts:</span>
                 {some}
             </div>
+            {user.userId === 16749 && path === '/settings' && <div>
+                <Button name={'edit'} onClick={goToEditMode} />
+            </div>}
         </div>
     )
 }

@@ -5,6 +5,7 @@ import Message from './Message/Message';
 import {Field, reduxForm} from "redux-form";
 import {Input} from "../Common/FormControls/FormControls";
 import {maxLengthCreator, minLengthCreator, required} from "../../helpers/validators";
+import Button from "../Common/Button/Button";
 
 const maxLength30 = maxLengthCreator(30);
 const minLength1 = minLengthCreator(1);
@@ -20,7 +21,7 @@ const MessageForm = props => {
                 />
             </div>
             <div>
-                <button className={classes.button}>send</button>
+                <Button name={'send'}/>
             </div>
         </form>
     )

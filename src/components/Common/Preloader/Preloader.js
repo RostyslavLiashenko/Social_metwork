@@ -4,6 +4,9 @@ const Preloader = () => {
     const styles = {
         maxWidth: '120px',
         borderRadius: '50%',
+        position: 'absolute',
+        left: '40%',
+        top: '50%',
     }
     return (
         <img
