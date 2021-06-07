@@ -18,9 +18,15 @@ const ProfileInfo = ({user, status, updateUserStatus, isOwner, addPhoto}) => {
             <img src={user.photos.large ?? user.photos ?? iconUser}
                  className={classes.userPhoto}
                  alt="avatar"/>
-            {isOwner && <div>
-                <input type="file" onChange={onMainPhotoChange}/>
-            </div>}
+            {isOwner &&
+            <div className={`${classes.buttonWrapper}`}>
+                <span className={`${classes.label}`}>
+                    Upload File
+                </span>
+                <input type="file" name="upload" onChange={onMainPhotoChange}
+                       className={`${classes.uploadBox}`} placeholder="Upload File"/>
+            </div>
+            }
             <ProfileStatus isOwner={isOwner} status={status} updateUserStatus={updateUserStatus}/>
             <ProfileData user={user}/>
         </div>

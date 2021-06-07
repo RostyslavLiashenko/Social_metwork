@@ -25,7 +25,10 @@ const User = ({user, followingInProgress, follow, unfollow}) => {
                         <span>unfollow</span></button>
                 }
             <div>
-                <div><b>Name: </b>{user.name}</div>
+                <div className={classes.name}>
+                    <b>Name: </b>
+                    <span>{user.name}</span>
+                </div>
                 {user.status && <div><b>Status: </b>{user.status}</div>}
             </div>
         </div>

@@ -40,7 +40,7 @@ const LoginForm = ({handleSubmit, error, captchaUrl}) => {
                 {error}
             </p>}
             <div>
-                <button className={s.button}>login</button>
+                <button className={classes.loginBtn}>login</button>
             </div>
         </form>
     )

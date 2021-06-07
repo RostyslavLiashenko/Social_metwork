@@ -4,3 +4,65 @@
 .userPhoto {
     border-radius: 50%;
 }
+.buttonWrapper {
+    position: relative;
+    max-width: 150px;
+    text-align: center;
+    margin: 5px 0 15px 75px;
+}
+.buttonWrapper span.label {
+    position: relative;
+    z-index: 0;
+    display: inline-block;
+    width: 100%;
+    background: #2b3120;
+    cursor: pointer;
+    color: #fff;
+    padding: 10px 0;
+    text-transform:uppercase;
+    font-size: .9em;
+}
+.uploadBox {
+    display: inline-block;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 40px;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+.statusBlock {
+    margin-left: 40px;
+}
+.statusBlock div {
+    display: inline-block;
+}
+.status {
+    font-size: 1.05em;
+    color: #fff;
+    padding: 2px 5px 2px 7px;
+    margin-right: 5px;
+    background: #2b3120;
+    border-radius: 5px;
+}
+.statusMsg {
+    font-weight: 600;
+    font-style: italic;
+    letter-spacing: 0.03em;
+    margin-right: 10px;
+}
+.statusInput {
+    vertical-align: 3px;
+    padding: 4px;
+    font-size: .95em;
+}
+.statusChngBtn {
+    border: none;
+    cursor: pointer;
+}
+.statusChngBtn img {
+    max-width: 20px;
+    vertical-align: -6px;
+}

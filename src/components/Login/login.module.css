@@ -52,6 +52,23 @@
     color: #2b3120;;
     opacity: 1;
 }
+.loginBtn {
+    cursor: pointer;
+    margin-top: 5px;
+    width: 120px;
+    padding: 8px;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    background: linear-gradient(to left top, #000, #2b3120) fixed;
+    border-radius: 10px;
+    border: 2px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.8);
+    transition: all 0.5s;
+}
+.loginBtn:hover {
+    border: 2px solid rgba(255,255,255,0.5);
+    background: linear-gradient(to left top, #000, #008800) fixed;
+}
 
 
 

@@ -1,7 +1,57 @@
+:root {
+    --red: rgb(209, 3, 3);
+    --white: #fff;
+    --black: #000;
+}
 .item {
     color: #212123;
+    max-width: 250px;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
 }
 .photo {
-    max-width: 90px;
+    max-width: 70px;
     border-radius: 50%;
+}
+.postMsg {
+    width: 200px;
+    margin-left: 20px;
+}
+.btn {
+    width: 110px;
+    height: 35px;
+    outline: 0;
+    border: 2px solid #ccc;
+    color: var(--black);
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0 3px 25px rgba(0, 0, 0, 0.05);
+    transition: 1s cubic-bezier(.21,.04,.26,.99);
+    font-size: 1rem;
+    border-radius: 10px;
+    background: var(--white);
+}
+.btn:hover {
+    box-shadow: 0 3px 25px rgba(0, 0, 0, 0.2);
+    border-color: var(--red);
+}
+.iconImage {
+    max-width: 22px;
+    max-height: 22px;
+}
+.likeIcon {
+    width: 22px;
+}
+.dislikeIcon {
+    width: 17px;
+    margin-right: 5px;
+}
+.msg {
+    font-size: 1.1em;
+    margin-bottom: 5px;
 }

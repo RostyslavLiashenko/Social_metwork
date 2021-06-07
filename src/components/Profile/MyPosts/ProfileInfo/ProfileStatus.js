@@ -20,19 +20,22 @@ const ProfileStatus = (props) => {
     }
 
     return (
-        <div>
+        <div className={classes.statusBlock}>
+            <span className={classes.status}>Status: </span>
             {editMode ?
-                <div>
-                    <b>Status: </b>
                     <input
+                        className={classes.statusInput}
                         onChange={onStatusChange}
                         autoFocus={true}
                         onBlur={deactivateEditMode}
                         type="text"
                         value={status}/>
-                </div> :
+                 :
                 <div>
-                    <span onDoubleClick={activateEditMode}><b>Status: </b>{status || '---'}</span>
+                    <span className={classes.statusMsg}>{status || '---'}</span>
+                    <button className={classes.statusChngBtn} onClick={activateEditMode}>
+                        <img src="https://www.svgrepo.com/show/146207/settings-cogwheel-button.svg" alt="change"/>
+                    </button>
                 </div>
             }
         </div>

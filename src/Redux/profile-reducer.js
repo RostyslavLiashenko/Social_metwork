@@ -7,11 +7,12 @@ const SET_USER_PROFILE = 'SET_USER_PROFILE'
 const SET_STATUS = 'SET_STATUS'
 const DELETE_USER = 'DELETE_USER'
 const SET_PHOTO = 'SET_PHOTO'
+const TOGGLE_LIKES = 'TOGGLE_LIKES'
 
 const initialState = {
     userPosts: [
-        {message: "Hi, how are you ?", likes: 15, id: 10, photo: userIcon},
-        {message: "It's my first post", likes: 20, id: 15, photo: userIcon},
+        {message: "Hi, how are you ?", likes: 15, id: 10, photo: userIcon, liked: false,},
+        {message: "It's my first post", likes: 20, id: 15, photo: userIcon, liked: false,},
     ],
     user: null,
     status: '',
@@ -21,14 +22,13 @@ const profileReducer = (state = initialState, action) => {
         case (ADD_POST) : {
             return {
                 ...state,
-                userPosts: [...state.userPosts, {message: action.newText, likes: 0, id: Math.trunc(Math.random() * 100), photo: state.userPosts[0].photo}],
+                userPosts: [...state.userPosts, {message: action.newText,
+                    likes: 0, id: Math.trunc(Math.random() * 100), photo: state.userPosts[0].photo}],
             }
         }
         case (SET_USER_PROFILE) : {
             const newUserPosts = state.userPosts.map(post => ({
-                message: post.message,
-                likes: post.likes,
-                id: post.id,
+                ...post,
                 photo: action.user.photos.small
             }))
             return {
@@ -51,15 +51,35 @@ const profileReducer = (state = initialState, action) => {
         }
         case (SET_PHOTO) : {
             const newUserPosts = state.userPosts.map(post => ({
-                message: post.message,
-                likes: post.likes,
-                id: post.id,
+                ...post,
                 photo: action.file
             }));
             return {
                 ...state,
                 user: {...state.user, photos: action.file},
                 userPosts: [...newUserPosts],
+            }
+        }
+        case (TOGGLE_LIKES) : {
+            const newLikes = state.userPosts.map(post => {
+                if (post.id === action.postId) {
+                    if (!post.liked)
+                        return {
+                            ...post,
+                            likes: ++post.likes,
+                            liked: true
+                    }
+                    return {
+                        ...post,
+                        likes: --post.likes,
+                        liked: false,
+                    }
+                }
+                return post
+            })
+            return {
+                ...state,
+                userPosts: [...newLikes]
             }
         }
         default:
@@ -69,6 +89,7 @@ const profileReducer = (state = initialState, action) => {
 
 export const addPostCreator = (newText) => ({type: ADD_POST, newText})
 export const deletePostCreator = (postId) => ({type: DELETE_USER, postId})
+export const toggleLikesCreator = (postId) => ({type: TOGGLE_LIKES, postId})
 export const setUserProfile = (user) => ({type: SET_USER_PROFILE, user})
 export const setStatus = (status) => ({type: SET_STATUS, status})
 export const savePhoto = (file) => ({type: SET_PHOTO, file})

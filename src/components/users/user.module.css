@@ -17,6 +17,12 @@
     border-radius: 50%;
     border: 1px solid;
 }
+.name {
+    max-width: 170px;
+}
+.name span {
+    word-wrap: break-word;
+}
 .btn {
     letter-spacing: 0.06em;
     font-weight: 600;

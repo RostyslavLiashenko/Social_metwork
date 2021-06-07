@@ -1,4 +1,4 @@
-import {addPostCreator} from '../../../Redux/profile-reducer';
+import {addPostCreator, toggleLikesCreator} from '../../../Redux/profile-reducer';
 import MyPosts from "./MyPosts";
 import {connect} from "react-redux";
 
@@ -12,6 +12,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         addPost: (newText) => {
             dispatch(addPostCreator(newText))
+        },
+        toggleLikes: (postId) => {
+            dispatch(toggleLikesCreator(postId))
         }
     }
 }

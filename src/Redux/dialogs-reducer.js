@@ -21,9 +21,7 @@ const dialogsReducer = (state = initialState, action) => {
             const newUsersData = state.usersData.map(data => {
                 if (data.id === action.userId) {
                     return {
-                        name: data.name,
-                        id: data.id,
-                        photo: data.photo,
+                        ...data,
                         messages: newMassagesArr
                     }
                 } else {
