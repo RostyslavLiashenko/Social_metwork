@@ -27,9 +27,9 @@
 }
 .mainInfo {
     font-size: 1.05em;
-    background: #2b3120;
-    color: #fff;
+    color: #2b3120;
     padding: 10px;
+    border: 2px solid #2b3120;
     border-radius: 20px;
     max-width: 300px;
 }
@@ -52,7 +52,7 @@
     border-bottom: 2px solid #2b3120;
     font-size: 1.15em;
     font-weight: 600;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 .contact {
     margin-bottom: 8px;
@@ -65,5 +65,18 @@ input[type='checkbox'] {
     margin-left: 30px;
     height: 18px;
     width: 18px;
+}
+@media (max-width: 600px) {
+    .settingsBlock {
+        margin: 10px;
+    }
+    .aboutMe > div:not(:nth-child(2)) {
+        display: flex;
+        flex-direction: column;
+    }
+    .aboutMe div:nth-child(2) {
+        justify-content: center;
+        margin: 3px 0;
+    }
 }
 

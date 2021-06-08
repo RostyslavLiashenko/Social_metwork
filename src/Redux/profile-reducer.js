@@ -11,8 +11,9 @@ const TOGGLE_LIKES = 'TOGGLE_LIKES'
 
 const initialState = {
     userPosts: [
-        {message: "Hi, how are you ?", likes: 15, id: 10, photo: userIcon, liked: false,},
-        {message: "It's my first post", likes: 20, id: 15, photo: userIcon, liked: false,},
+        {message: "It's my first post", likes: 31, id: 1, photo: userIcon, liked: false,},
+        {message: "Hi, how are you ?", likes: 44, id: 2, photo: userIcon, liked: false,},
+        {message: "Just another good day...", likes: 38, id: 3, photo: userIcon, liked: false,},
     ],
     user: null,
     status: '',

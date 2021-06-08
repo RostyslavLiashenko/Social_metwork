@@ -3,10 +3,14 @@ import classes from './Header.module.css';
 import {Link} from "react-router-dom";
 import Preloader from "../Common/Preloader/Preloader";
 import logoPhoto from '../../assets/logo2.png'
+import useWindowSize from "../../helpers/useWindowSize";
+import BurgerIcon from "./burgerIcon/burgerIcon";
 
 const Header = (props) => {
+    const widthSize = useWindowSize().width
     return (
-        <header className={classes.header}>
+        <header className={widthSize >= 450 ? `${classes.header}` : `${classes.header} ${classes.stickyHeader}`}>
+            {widthSize >= 450 ?
             <Link to='/profile'>
             <img
                 src={logoPhoto}
@@ -14,6 +18,8 @@ const Header = (props) => {
                 width="140px"
                 />
             </Link>
+            : <BurgerIcon />
+            }
                 <div className={classes.loginBlock}>
                     {props.isFetching ? <Preloader /> : ''}
                     {props.isAuth ? <div className={classes.authBlock}>

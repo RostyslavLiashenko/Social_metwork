@@ -11,7 +11,7 @@ const Profile = props => {
                          isOwner={props.isOwner}
                          addPhoto={props.addPhoto}
                          updateUserStatus={props.updateUserStatus}/>
-            {props.isOwner ? <MyPostsContainer/> : <h3>My posts</h3>}
+            {props.isOwner ? <MyPostsContainer/> : <h3 className={classes.myPosts}>My posts</h3>}
         </div>
     )
 }

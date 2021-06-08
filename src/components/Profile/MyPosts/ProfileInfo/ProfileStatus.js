@@ -18,7 +18,6 @@ const ProfileStatus = (props) => {
     const onStatusChange = (e) => {
         setStatus(e.target.value)
     }
-
     return (
         <div className={classes.statusBlock}>
             <span className={classes.status}>Status: </span>

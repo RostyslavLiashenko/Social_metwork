@@ -1,9 +1,13 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types'
 import classes from './pagination.module.css'
-
+import useWindowSize from "../../../helpers/useWindowSize";
 
 const Pagination = ({totalItemsCount, itemsPerPage, onPageChange, currentPage, portionSize}) => {
+    const widthSize = useWindowSize().width
+    if (widthSize <= 850) {
+        portionSize = 5
+    }
     let pageCount = Math.ceil(totalItemsCount / itemsPerPage)
     let pages = []
     for (let i = 1; i <= pageCount; i++) {

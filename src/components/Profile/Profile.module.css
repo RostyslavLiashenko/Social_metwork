@@ -1,6 +1,16 @@
 .profileContainer {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    max-width: 1100px;
-    margin: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    max-width: 1000px;
+}
+.myPosts {
+    border: none;
+    margin: 20px;
+}
+@media (max-width: 1000px) {
+    .profileContainer {
+        display: flex;
+        flex-direction: column;
+        max-width: 600px;
+    }
 }

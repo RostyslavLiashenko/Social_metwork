@@ -24,7 +24,14 @@
     border: 1px solid #2b3120;
     margin: 0 3px;
 }
- .selectedPage, .arrowBtn:hover, .pageBtn:hover {
+.selectedPage, .arrowBtn:hover, .pageBtn:hover {
     background: #2b3120;
     color: #fff;
 }
+@media (max-width: 768px) {
+    .pagination {
+        max-width: 400px;
+    }
+}
+
+

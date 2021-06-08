@@ -4,6 +4,7 @@ import Post from './Post/Post';
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, minLengthCreator, required} from "../../../helpers/validators";
 import {Textarea} from "../../Common/FormControls/FormControls";
+import Button from "../../Common/Button/Button";
 
 const maxLength20 = maxLengthCreator(20);
 const minLength1 = minLengthCreator(3);
@@ -11,12 +12,12 @@ const PostForm = props => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field placeholder='enter your text'
+                <Field placeholder='enter your text' className={classes.textField}
                     validate={[required, maxLength20, minLength1]}
                     component={Textarea} name='postText'/>
             </div>
             <div>
-                <button>Add post</button>
+                <Button name={`Add post`}/>
             </div>
         </form>
     )
@@ -46,8 +47,4 @@ const MyPosts = props => {
         </div>
     )
 }
-// React.memo(MyPosts) - оптимизирует компонет(работает без лишних перезагрузок)
-// ShouldComponentUpdate(nextProps, nextState) { return nextProps !== this.props}
-// PureComponent обычный Component который использует по дефолту ShouldComponentUpdate
-
 export default MyPosts;

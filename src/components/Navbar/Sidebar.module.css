@@ -3,6 +3,7 @@
     background: #d6d6d6;
     margin-top: -80px;
     min-height: 100vh;
+    min-width: 180px;
 }
 .nav {
     margin-top: 80px;
@@ -19,6 +20,7 @@
 .itemContainer {
     padding: .6em 1em .5em 2em;
     transition: background, color .2s ease-in-out;
+    font-size: 1.15em;
 }
 .itemContainer:hover, .active .itemContainer {
     color: #fff;
@@ -32,7 +34,16 @@
     border-radius: 50%;
 }
 .item span {
-    font-size: 1.15em;
     vertical-align: 40%;
-    padding-left: .6em;
+    padding-left: .5em;
+}
+
+@media (max-width: 1200px) {
+    .itemContainer {
+        padding: .5em .5em .4em 1em;
+        font-size: 1.05em;
+    }
+    .sidebarIcon {
+        max-width: 30px;
+    }
 }

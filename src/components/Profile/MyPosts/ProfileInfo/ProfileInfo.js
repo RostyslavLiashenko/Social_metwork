@@ -15,9 +15,11 @@ const ProfileInfo = ({user, status, updateUserStatus, isOwner, addPhoto}) => {
     }
     return (
         <div className={classes.descriptionBlock}>
-            <img src={user.photos.large ?? user.photos ?? iconUser}
-                 className={classes.userPhoto}
-                 alt="avatar"/>
+            <div>
+                <img src={user.photos.large ?? user.photos ?? iconUser}
+                     className={classes.userPhoto}
+                     alt="avatar"/>
+            </div>
             {isOwner &&
             <div className={`${classes.buttonWrapper}`}>
                 <span className={`${classes.label}`}>

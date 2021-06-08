@@ -7,10 +7,13 @@ import usersIcon from '../../assets/sidebar/users.png'
 import newsIcon from '../../assets/sidebar/news.png'
 import musicIcon from '../../assets/sidebar/music.png'
 import settingsIcon from '../../assets/sidebar/settings.png'
+import useWindowSize from "../../helpers/useWindowSize";
 
 const Sidebar = ({activeUrl}) => {
+    const widthSize = useWindowSize().width
     return (
         <Fragment>
+            {widthSize >= 450 &&
             <div className={classes.sidebar}>
                 <nav className={classes.nav}>
                     <Link className={activeUrl === '/profile' ? `${classes.item} ${classes.active}` : `${classes.item}`} to="/profile">
@@ -52,6 +55,7 @@ const Sidebar = ({activeUrl}) => {
                     </Link>
                 </nav>
             </div>
+            }
         </Fragment>
     )
 }

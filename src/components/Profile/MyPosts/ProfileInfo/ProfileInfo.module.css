@@ -1,5 +1,9 @@
 .descriptionBlock {
-    padding: 10px;
+    padding: 20px 10px 20px 30px;
+    border: 3px solid #2b3120;
+    border-radius: 0 0 50% 0;
+    border-left: none;
+    border-top: none;
 }
 .userPhoto {
     border-radius: 50%;
@@ -34,17 +38,17 @@
     cursor: pointer;
 }
 .statusBlock {
-    margin-left: 40px;
+    margin-left: 30px;
+    padding: 5px;
+    max-width: 280px;
 }
 .statusBlock div {
     display: inline-block;
 }
 .status {
     font-size: 1.05em;
-    color: #fff;
+    color: #2b3120;
     padding: 2px 5px 2px 7px;
-    margin-right: 5px;
-    background: #2b3120;
     border-radius: 5px;
 }
 .statusMsg {
@@ -52,9 +56,9 @@
     font-style: italic;
     letter-spacing: 0.03em;
     margin-right: 10px;
+    word-break: break-all;
 }
 .statusInput {
-    vertical-align: 3px;
     padding: 4px;
     font-size: .95em;
 }
@@ -63,6 +67,13 @@
     cursor: pointer;
 }
 .statusChngBtn img {
-    max-width: 20px;
-    vertical-align: -6px;
+    max-width: 17px;
+    vertical-align: -4px;
+}
+@media (max-width: 700px) {
+    .descriptionBlock {
+        border-radius: 0;
+        border-right: none;
+        border-bottom: 2px solid #2b3120;
+    }
 }
