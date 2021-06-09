@@ -5,7 +5,6 @@ import ProfileStatus from "./ProfileStatus";
 import iconUser from '../../../../assets/users_images/userPhoto.jpg'
 import {ProfileData} from "../../../Settings/Settings";
 
-
 const ProfileInfo = ({user, status, updateUserStatus, isOwner, addPhoto}) => {
     if (!user) return <Preloader/>
     const onMainPhotoChange = (e) => {
@@ -21,12 +20,12 @@ const ProfileInfo = ({user, status, updateUserStatus, isOwner, addPhoto}) => {
                      alt="avatar"/>
             </div>
             {isOwner &&
-            <div className={`${classes.buttonWrapper}`}>
-                <span className={`${classes.label}`}>
+            <div className={classes.buttonWrapper}>
+                <span className={classes.label}>
                     Upload File
                 </span>
                 <input type="file" name="upload" onChange={onMainPhotoChange}
-                       className={`${classes.uploadBox}`} placeholder="Upload File"/>
+                       className={classes.uploadBox} placeholder="Upload File"/>
             </div>
             }
             <ProfileStatus isOwner={isOwner} status={status} updateUserStatus={updateUserStatus}/>
@@ -34,5 +33,4 @@ const ProfileInfo = ({user, status, updateUserStatus, isOwner, addPhoto}) => {
         </div>
     )
 };
-
 export default ProfileInfo;

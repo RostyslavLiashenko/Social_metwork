@@ -9,7 +9,8 @@ import Button from "../Common/Button/Button";
 const ProfileDataForm = ({handleSubmit, user, error}) => {
     return (
         <form onSubmit={handleSubmit} className={classes.aboutMe}>
-            {error && <p className={classes.formSummaryError}>
+            {error &&
+            <p className={classes.formSummaryError}>
                 {error}
             </p>}
             <div>
@@ -18,7 +19,7 @@ const ProfileDataForm = ({handleSubmit, user, error}) => {
             </div>
             <div className={classes.checkBox}>
                 <span>I'm looking <br/>for a new job:</span>
-                {CreateField(Input, [], 'lookingForAJob', 'checkbox', '', `${classes.inputCheckBox}`)}
+                {CreateField(Input, [], 'lookingForAJob', 'checkbox', '')}
             </div>
             <div>
                 <span>About me:</span>
@@ -30,7 +31,8 @@ const ProfileDataForm = ({handleSubmit, user, error}) => {
             </div>
             {Object.keys(user.contacts).map(key => {
                 return <div className={classes.contact} key={key}>
-                    <span>{key}:</span> {CreateField(Input, [], `contacts.${key}`, 'text', `${key}`, `${s.form}`)}
+                    <span>{key}:</span>
+                    {CreateField(Input, [], `contacts.${key}`, 'text', `${key}`, `${s.form}`)}
                 </div>
             })}
             <div>

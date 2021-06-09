@@ -13,12 +13,10 @@
     color: rgba(255,255,255,0.9);
     transition: all 0.5s;
 }
-
 .btn:hover {
     border: 5px solid rgba(255,255,255,0.5);
     background: linear-gradient(to left top, #000, #11bb32) fixed;
 }
-
 .btn:focus {
     background: linear-gradient(to left top, #11bb32, #000) fixed;
 }

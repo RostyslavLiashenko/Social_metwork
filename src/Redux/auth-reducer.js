@@ -44,35 +44,35 @@ export const setCaptchaUrl = (captchaUrl) => ({type: SET_CAPTCHA_URL, payload: {
 export const getUserAuth = () => {
     return async (dispatch) => {
         dispatch(setToggleFetching(true))
-
         const data = await headerAPI.getUserAuth()
         if (data) dispatch(setToggleFetching(false))
         if (data.resultCode === 0) {
-            let {email, id, login} = data.data
+            const {email, id, login} = data.data
             dispatch(setAuthUserData(id, login, email, true))
         }
     }
 }
 
-export const login = (email, password, rememberMe, captcha) => async (dispatch) => {
-    const res = await headerAPI.login(email, password, rememberMe, captcha)
-    if (res.data.resultCode === 0) {
-        localStorage.removeItem('rememberMe')
-        localStorage.removeItem('password')
-        if (rememberMe) {
-            localStorage.setItem('rememberMe', rememberMe)
-            localStorage.setItem('password', password)
+export const login = (email, password, rememberMe, captcha) => {
+    return async (dispatch) => {
+        const res = await headerAPI.login(email, password, rememberMe, captcha)
+        if (res.data.resultCode === 0) {
+            localStorage.removeItem('rememberMe')
+            localStorage.removeItem('password')
+            if (rememberMe) {
+                localStorage.setItem('rememberMe', rememberMe)
+                localStorage.setItem('password', password)
+            }
+            dispatch(getUserAuth())
+            return
         }
-        dispatch(getUserAuth())
-        return
+        if (res.data.resultCode === 10) {
+            dispatch(getCaptchaUrl())
+        }
+        const message = res.data.messages ? res.data.messages[0] : 'Something went wrong'
+        dispatch(stopSubmit('login', {_error: message}))
     }
-    if (res.data.resultCode === 10) {
-        dispatch(getCaptchaUrl())
-    }
-    const message = res.data.messages ? res.data.messages[0] : 'Something went wrong'
-    dispatch(stopSubmit('login', {_error: message}))
 }
-
 
 export const getCaptchaUrl = () => {
     return async (dispatch) => {
@@ -82,15 +82,17 @@ export const getCaptchaUrl = () => {
     }
 }
 
-export const logout = () => async (dispatch, getState) => {
-    const rememberMe = localStorage.rememberMe
-    if (rememberMe) {
-        const email = getState().auth.email
-        dispatch(setAuthUserData(null, null, email, false))
-        return
+export const logout = () => {
+    return async (dispatch, getState) => {
+        const rememberMe = localStorage.rememberMe
+        if (rememberMe) {
+            const email = getState().auth.email
+            dispatch(setAuthUserData(null, null, email, false))
+            return
+        }
+        const res = await headerAPI.logout()
+        if (res.data.resultCode === 0)
+            return dispatch(setAuthUserData(null, null, null, false))
     }
-    const res = await headerAPI.logout()
-    if (res.data.resultCode === 0)
-        return dispatch(setAuthUserData(null, null, null, false))
 }
 export default authReducer;

@@ -1,13 +1,9 @@
-import React, {useState} from "react";
+import React from "react";
 import classes from './burgerIcon.module.css';
 
-const BurgerIcon = () => {
-    const [click, setClick] = useState(false)
-    const iconClick = () => {
-        setClick(prev => !prev)
-    }
+const BurgerIcon = ({isOpenMenu, burgerClick}) => {
     return (
-        <div className={click ? `${classes.container} ${classes.change}` : `${classes.container}`} onClick={iconClick}>
+        <div className={isOpenMenu ? `${classes.container} ${classes.change}` : `${classes.container}`} onClick={burgerClick}>
             <div className={classes.bar1}></div>
             <div className={classes.bar2}></div>
             <div className={classes.bar3}></div>

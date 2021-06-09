@@ -81,3 +81,11 @@
     -webkit-transform: rotate(40deg);
     transform: rotate(40deg);
 }
+@media screen and (max-width: 450px){
+    .usersContainer {
+        margin: 0;
+    }
+    .user {
+        margin: 10px auto;
+    }
+}

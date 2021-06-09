@@ -6,8 +6,8 @@ const DELETE_MESSAGE = 'DELETE_MESSAGE'
 const initialState = {
     usersData: [
         {name: 'Evgen', id: 1, photo: userIcon, messages: ['Hello', 'How are you ?']},
-        {name: 'Valera', id: 2, photo: userIcon, messages: ['Hi', 'What are you doing ?']},
-        {name: 'Vika', id: 3, photo: userIcon, messages: ["What's up ?"]},
+        {name: 'Valera', id: 2, photo: userIcon, messages: ['Hi', 'What are you doing ?', 'Nothing, just chill out']},
+        {name: 'Mario', id: 3, photo: userIcon, messages: ["What's up ?"]},
         {name: 'Dasha', id: 4, photo: userIcon, messages: ['Happy birthday', "It's the best day", "I'm exiting to meeting"]},
         {name: 'Katya', id: 5, photo: userIcon, messages: ['How is it going ???']},
         {name: 'Pasha', id: 6, photo: userIcon, messages: []},
@@ -24,9 +24,8 @@ const dialogsReducer = (state = initialState, action) => {
                         ...data,
                         messages: newMassagesArr
                     }
-                } else {
-                    return data
                 }
+                return data
             })
             return {
                 ...state,

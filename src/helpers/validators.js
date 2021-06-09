@@ -5,10 +5,10 @@ export const required = (value) => {
 
 export const maxLengthCreator = (maxLength) => (value) => {
     if (value.length <= maxLength) return undefined
-    return `Field must include ${maxLength} symbols max`
+    return `Field must include max ${maxLength} symbols`
 }
 
 export const minLengthCreator = (minLength) => (value) => {
     if (value.length >= minLength) return undefined
-    return `Field must include ${minLength} symbols min`
+    return `Field must include at least ${minLength} symbols`
 }

@@ -40,5 +40,4 @@ const ProfileStatus = (props) => {
         </div>
     )
 }
-
 export default ProfileStatus;

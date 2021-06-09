@@ -69,7 +69,7 @@
     border: 2px solid rgba(255,255,255,0.5);
     background: linear-gradient(to left top, #000, #008800) fixed;
 }
-@media (max-width: 570px) {
+@media screen and (max-width: 570px) {
     .wrapper {
         padding: 10px 10px 10px 15px;
     }

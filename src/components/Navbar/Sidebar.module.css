@@ -37,8 +37,7 @@
     vertical-align: 40%;
     padding-left: .5em;
 }
-
-@media (max-width: 1200px) {
+@media screen and (max-width: 1200px) {
     .itemContainer {
         padding: .5em .5em .4em 1em;
         font-size: 1.05em;

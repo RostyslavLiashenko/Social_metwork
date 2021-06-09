@@ -70,10 +70,26 @@
     max-width: 17px;
     vertical-align: -4px;
 }
-@media (max-width: 700px) {
+@media screen and (max-width: 700px) {
     .descriptionBlock {
         border-radius: 0;
         border-right: none;
         border-bottom: 2px solid #2b3120;
+    }
+}
+@media screen and (max-width: 450px){
+    .descriptionBlock {
+        padding: 10px;
+    }
+    .userPhoto {
+        display: block;
+        max-width: 260px;
+        margin: 0 auto;
+    }
+    .buttonWrapper {
+        margin: 10px auto;
+    }
+    .statusBlock {
+        margin: 0 auto;
     }
 }

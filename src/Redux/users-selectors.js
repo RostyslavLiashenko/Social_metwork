@@ -1,9 +1,8 @@
 import {createSelector} from "reselect";
 
 export const getUsersSelector = state => state.usersPage.users
-
 export const getUsersSuperSelector = createSelector(getUsersSelector, (users) => {
-    return users.filter((u) => true)
+    return users.filter(() => true)
 })
 export const getUsersPerPage = (state) => {
     return state.usersPage.itemsPerPage

@@ -12,14 +12,14 @@ const LoginForm = ({handleSubmit, error, captchaUrl}) => {
     return (
         <form onSubmit={handleSubmit} className={classes.formContainer}>
             <div className={classes.inputBlock}>
-            <div>Email: </div>
-                {CreateField(Input, [required], 'email',
-                'email', 'email', `${s.form}`)}
+                <div>Email: </div>
+                    {CreateField(Input, [required], 'email',
+                    'email', 'email', `${s.form}`)}
             </div>
             <div className={classes.inputBlock}>
-            <div>Password: </div>
-                {CreateField(Input, [required], 'password',
-                'password', 'password', `${s.form}`)}
+                <div>Password: </div>
+                    {CreateField(Input, [required], 'password',
+                    'password', 'password', `${s.form}`)}
             </div>
             <div className={classes.rememberBlock}>
                 <Field component={Input}
@@ -29,11 +29,12 @@ const LoginForm = ({handleSubmit, error, captchaUrl}) => {
                        type="checkbox"/>
                 <label htmlFor="remember">remember</label>
             </div>
-            {captchaUrl && <div>
+            {captchaUrl &&
+            <div>
                 <img src={captchaUrl} alt="captcha"/>
                 <div>
-                {CreateField(Input, [required], 'captcha', 'text',
-                    'symbols from image', `${s.form}`)}
+                    {CreateField(Input, [required], 'captcha', 'text',
+                        'symbols from image', `${s.form}`)}
                 </div>
             </div>}
             {error && <p className={classes.formSummaryError}>

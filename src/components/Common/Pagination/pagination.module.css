@@ -28,7 +28,7 @@
     background: #2b3120;
     color: #fff;
 }
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .pagination {
         max-width: 400px;
     }

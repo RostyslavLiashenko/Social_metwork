@@ -25,7 +25,6 @@ class ProfileContainer extends Component {
         if (this.props.match.params.userId !== prevProps.match.params.userId)
         this.refreshProfile()
     }
-
     render() {
         return (
             <Profile {...this.props}
@@ -37,8 +36,7 @@ class ProfileContainer extends Component {
         )
     }
 }
-
-let mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
     return {
         user: state.profilePage.user,
         status: state.profilePage.status,
@@ -46,7 +44,6 @@ let mapStateToProps = (state) => {
         isAuth: state.auth.isAuth,
     }
 }
-
 export default compose(connect(mapStateToProps,
     {getProfile, getUserStatus, updateUserStatus, addPhoto}),
     withRouter, withAuthRedirect)(ProfileContainer)

@@ -19,7 +19,6 @@ export const userAPI = {
         return instance.delete(`follow/${id}`).then(res => res.data)
     },
 }
-
 export const profileApi = {
     getProfile(userId) {
         return instance.get(`profile/${userId}`).then(res => res.data)

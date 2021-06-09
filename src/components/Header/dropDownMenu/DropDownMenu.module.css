@@ -1,0 +1,35 @@
+div.menu {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 60px;
+    left: 0;
+    transition: .3s ease-in-out;
+}
+div.hiddenMenu {
+    left: -100%;
+}
+.blur {
+    width: 50%;
+    height: 100vh;
+    backdrop-filter: blur(2px);
+    position: absolute;
+    right: 0;
+}
+.menuContent {
+    width: 50%;
+    height: 100%;
+    background: #2b3120;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.item {
+    padding: 10px 0;
+}
+.item a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2em;
+    letter-spacing: 0.1em;
+}

@@ -2,7 +2,6 @@ import React from 'react'
 import classes from './FormControls.module.css';
 import {Field} from "redux-form";
 
-
 export const FormControl = ({meta: {touched, error}, children}) => {
     const hasError = touched && error;
     return (

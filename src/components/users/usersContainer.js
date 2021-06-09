@@ -22,15 +22,13 @@ import {
 
 class UsersClass extends React.Component {
     componentDidMount() {
-        let {requestUsers, currentPage, itemsPerPage} = this.props
+        const {requestUsers, currentPage, itemsPerPage} = this.props
         requestUsers(currentPage, itemsPerPage)
     }
-
     onPageChange = (page) => {
-        let {requestUsers, itemsPerPage} = this.props
+        const {requestUsers, itemsPerPage} = this.props
         requestUsers(page, itemsPerPage)
     }
-
     render() {
         return (
             <>
@@ -50,7 +48,6 @@ class UsersClass extends React.Component {
         )
     }
 }
-
 const mapStateToProps = (state) => {
     return {
         users: getUsersSelector(state),

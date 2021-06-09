@@ -7,7 +7,7 @@
     border: none;
     margin: 20px;
 }
-@media (max-width: 1000px) {
+@media screen and (max-width: 1000px) {
     .profileContainer {
         display: flex;
         flex-direction: column;
