@@ -3,25 +3,45 @@ import classes from './Dialogs.module.css';
 import UserItem from "./UserItem/UserItem";
 import Message from './Message/Message';
 import {Field, reduxForm} from "redux-form";
-import {Input} from "../Common/FormControls/FormControls";
 import {maxLengthCreator, minLengthCreator, required} from "../../helpers/validators";
-import Button from "../Common/Button/Button";
+import {Icon} from "@material-ui/core";
+import {Button, TextField} from "@material-ui/core";
+import {FormControl} from "../Common/FormControls/FormControls";
 
 const maxLength30 = maxLengthCreator(30);
 const minLength1 = minLengthCreator(1);
 const MessageForm = props => {
+    const BtnSend = () => {
+        return (<Button
+            variant="contained"
+            style={{
+                backgroundColor: '#2b3120',
+                color: '#fff',
+                fontSize: '.95em',
+            }}
+            component='button'
+            size="small"
+            type='submit'
+            endIcon={<Icon>send</Icon>}>
+            send
+        </Button>)
+    }
+    const renderInput = (props) => {
+        const {input, meta, ...restProps} = props
+        return <FormControl {...props}><TextField style={{marginBottom: '10px'}} {...restProps} {...input}/></FormControl>
+    }
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field component={Input}
-                       validate={[required, maxLength30, minLength1]}
+                <Field component={renderInput}
                        name='newMessageBody'
+                       type='text'
                        placeholder='Enter your message'
-                       className={classes.form}
+                       validate={[required, maxLength30, minLength1]}
                 />
             </div>
             <div>
-                <Button name={'send'}/>
+                <Field component={BtnSend} name="send"/>
             </div>
         </form>
     )

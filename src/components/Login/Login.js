@@ -7,6 +7,7 @@ import {connect} from "react-redux";
 import {Redirect} from "react-router";
 import classes from './login.module.css';
 import s from '../Dialogs/Dialogs.module.css'
+import {Button} from "@material-ui/core";
 
 const LoginForm = ({handleSubmit, error, captchaUrl}) => {
     return (
@@ -41,7 +42,16 @@ const LoginForm = ({handleSubmit, error, captchaUrl}) => {
                 {error}
             </p>}
             <div>
-                <button className={classes.loginBtn}>login</button>
+                <Button
+                    style={{
+                        color: '#fff',
+                        padding: '7px 20px',
+                        margin: '5px',
+                        backgroundColor: '#2b3120'
+                    }}
+                    type='submit'>
+                    login
+                </Button>
             </div>
         </form>
     )

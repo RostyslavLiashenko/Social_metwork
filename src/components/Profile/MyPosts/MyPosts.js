@@ -4,7 +4,7 @@ import Post from './Post/Post';
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, minLengthCreator, required} from "../../../helpers/validators";
 import {Textarea} from "../../Common/FormControls/FormControls";
-import Button from "../../Common/Button/Button";
+import {Button, Icon} from "@material-ui/core";
 
 const maxLength20 = maxLengthCreator(20);
 const minLength1 = minLengthCreator(3);
@@ -17,7 +17,18 @@ const PostForm = props => {
                     component={Textarea} name='postText'/>
             </div>
             <div>
-                <Button name={`Add post`}/>
+                <Button
+                    variant="contained"
+                    style={{
+                        textTransform: 'lowercase',
+                        backgroundColor: '#2b3120',
+                        color: '#fff',
+                        fontSize: '.95em',
+                    }}
+                    size="small"
+                    type='submit'
+                    endIcon={<Icon>add</Icon>}
+                >Add post</Button>
             </div>
         </form>
     )

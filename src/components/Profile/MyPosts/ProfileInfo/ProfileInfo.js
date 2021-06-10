@@ -4,6 +4,8 @@ import Preloader from "../../../Common/Preloader/Preloader";
 import ProfileStatus from "./ProfileStatus";
 import iconUser from '../../../../assets/users_images/userPhoto.jpg'
 import {ProfileData} from "../../../Settings/Settings";
+import {Button} from "@material-ui/core";
+import {PhotoCamera} from "@material-ui/icons";
 
 const ProfileInfo = ({user, status, updateUserStatus, isOwner, addPhoto}) => {
     if (!user) return <Preloader/>
@@ -20,13 +22,37 @@ const ProfileInfo = ({user, status, updateUserStatus, isOwner, addPhoto}) => {
                      alt="avatar"/>
             </div>
             {isOwner &&
-            <div className={classes.buttonWrapper}>
-                <span className={classes.label}>
-                    Upload File
-                </span>
-                <input type="file" name="upload" onChange={onMainPhotoChange}
-                       className={classes.uploadBox} placeholder="Upload File"/>
+            <div style={{margin: '10px 60px'}}>
+                <input
+                    color="primary"
+                    accept="image/*"
+                    type="file"
+                    onChange={onMainPhotoChange}
+                    id="icon-button-file"
+                    style={{display: 'none',}}
+                />
+                <label htmlFor="icon-button-file">
+                    <Button
+                        variant="contained"
+                        component="span"
+                        style={{
+                            color: '#fff',
+                            backgroundColor: '#2b3120'
+                        }}
+                        startIcon={<PhotoCamera/>}
+                        size="large"
+                    >
+                        Upload photo
+                    </Button>
+                </label>
             </div>
+                /*<div className={classes.buttonWrapper}>
+                    <span className={classes.label}>
+                        Upload File
+                    </span>
+                    <input type="file" name="upload" onChange={onMainPhotoChange}
+                           className={classes.uploadBox} placeholder="Upload File"/>
+                </div>*/
             }
             <ProfileStatus isOwner={isOwner} status={status} updateUserStatus={updateUserStatus}/>
             <ProfileData user={user}/>

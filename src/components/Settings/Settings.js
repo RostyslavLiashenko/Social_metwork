@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import classes from './Settings.module.css';
 import ProfileDataFormRedux from './ProfileDataForm'
 import {Redirect} from "react-router-dom";
-import Button from "../Common/Button/Button";
+import {Button} from '@material-ui/core'
 
 const Settings = ({user, saveProfile, path}) => {
     const [editMode, setEditMode] = useState(false)
@@ -29,7 +29,7 @@ export const ProfileData = ({user, goToEditMode, path}) => {
     return (
         <div className={classes.infoBlock}>
             <div className={classes.mainInfo}>
-                <div className={classes.name}>
+                <div>
                     <b>Name: </b>{user.fullName}
                 </div>
                 <div>
@@ -46,8 +46,21 @@ export const ProfileData = ({user, goToEditMode, path}) => {
                 <span>Contacts:</span>
                 {some}
             </div>
-            {user.userId === 16749 && path === '/settings' && <div>
-                <Button name={'edit'} onClick={goToEditMode} />
+            {user.userId === 16749 && path === '/settings' &&
+            <div style={{textAlign: 'center'}}>
+                <Button
+                    style={{
+                        color: '#fff',
+                        textTransform: 'lowercase',
+                        backgroundColor: '#2b3120',
+                        padding: '5px 20px',
+                        margin: '10px auto',
+                        fontSize: '1em',
+                    }}
+                    variant='contained'
+                    onClick={goToEditMode}>
+                    edit
+                </Button>
             </div>}
         </div>
     )

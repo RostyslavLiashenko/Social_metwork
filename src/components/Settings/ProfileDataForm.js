@@ -4,7 +4,8 @@ import {required} from "../../helpers/validators";
 import {reduxForm} from "redux-form";
 import classes from './Settings.module.css';
 import s from '../Dialogs/Dialogs.module.css'
-import Button from "../Common/Button/Button";
+import {Button} from '@material-ui/core'
+import SaveIcon from '@material-ui/icons/Save'
 
 const ProfileDataForm = ({handleSubmit, user, error}) => {
     return (
@@ -36,7 +37,20 @@ const ProfileDataForm = ({handleSubmit, user, error}) => {
                 </div>
             })}
             <div>
-                <Button name={'save'}/>
+                <Button
+                    variant="contained"
+                    style={{
+                        textTransform: 'lowercase',
+                        backgroundColor: '#2b3120',
+                        color: '#fff',
+                        fontSize: '.95em',
+                        margin: '10px auto'
+                    }}
+                    type='submit'
+                    startIcon={<SaveIcon/>}
+                >
+                    save
+                </Button>
             </div>
         </form>
     )
