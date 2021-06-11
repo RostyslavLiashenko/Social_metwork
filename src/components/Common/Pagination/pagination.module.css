@@ -5,28 +5,9 @@
     border-radius: 10px;
     background: #d6d6d6;
 }
-.arrowBtn {
-    cursor: pointer;
-    font-size: 1.5em;
-    border: none;
-    line-height: 29px;
-    background: #fff;
-    transition: .2s ease-in-out;
-    vertical-align: -2px;
-}
-.pageBtn {
-    background: #fff;
-    cursor: pointer;
-    font-weight: 600;
-    vertical-align: center;
-    font-size: 1em;
-    padding: 5px 9px;
-    border: 1px solid #2b3120;
-    margin: 0 3px;
-}
-.selectedPage, .arrowBtn:hover, .pageBtn:hover {
-    background: #2b3120;
-    color: #fff;
+.selectedPage {
+    background: #2b3120 !important;
+    color: #fff !important;
 }
 @media screen and (max-width: 768px) {
     .pagination {

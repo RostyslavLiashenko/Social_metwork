@@ -13,17 +13,18 @@
     background: #d6d6d6;
     max-width: 360px;
     border-radius: 10px;
-    padding: 10px 5px 20px 30px;
+    padding: 20px 5px 25px 35px;
 }
 .inputBlock {
     display: flex;
     justify-content: space-between;
-    max-width: 300px;
+    align-items: center;
+    max-width: 330px;
     padding-bottom: 10px;
-    align-items: baseline;
 }
-.inputBlock div:first-child {
+.email, .password {
     font-weight: 600;
+    font-size: 1.1em;
 }
 .formSummaryError {
     display: inline-block;

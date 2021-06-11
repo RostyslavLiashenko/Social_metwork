@@ -38,17 +38,18 @@
     cursor: pointer;
 }
 .statusBlock {
-    margin-left: 30px;
+    margin-left: 20px;
+    margin-bottom: 15px;
     padding: 5px;
+    font-size: 1.05em;
     max-width: 280px;
-}
-.statusBlock div {
-    display: inline-block;
+    display: flex;
+    align-items: center;
 }
 .status {
     font-size: 1.05em;
     color: #2b3120;
-    padding: 2px 5px 2px 7px;
+    padding: 2px 15px 2px 7px;
     border-radius: 5px;
 }
 .statusMsg {
@@ -58,17 +59,9 @@
     margin-right: 10px;
     word-break: break-all;
 }
-.statusInput {
-    padding: 4px;
-    font-size: .95em;
-}
-.statusChngBtn {
-    border: none;
-    cursor: pointer;
-}
-.statusChngBtn img {
-    max-width: 17px;
-    vertical-align: -4px;
+.statusBlock input {
+    padding-left: 10px;
+    font-size: 1.05em;
 }
 @media screen and (max-width: 700px) {
     .descriptionBlock {

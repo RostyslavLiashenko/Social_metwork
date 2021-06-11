@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from "react";
 import classes from './ProfileInfo.module.css';
+import {TextField} from "@material-ui/core";
+import SettingsIcon from '@material-ui/icons/Settings';
 
 const ProfileStatus = (props) => {
     const [editMode, setEditMode] = useState(false)
@@ -22,19 +24,16 @@ const ProfileStatus = (props) => {
         <div className={classes.statusBlock}>
             <span className={classes.status}>Status: </span>
             {editMode ?
-                    <input
-                        className={classes.statusInput}
+                    <TextField
                         onChange={onStatusChange}
                         autoFocus={true}
                         onBlur={deactivateEditMode}
                         type="text"
                         value={status}/>
                  :
-                <div>
+                <div style={{display: "flex", alignItems: 'center'}}>
                     <span className={classes.statusMsg}>{status || '---'}</span>
-                    <button className={classes.statusChngBtn} onClick={activateEditMode}>
-                        <img src="https://www.svgrepo.com/show/146207/settings-cogwheel-button.svg" alt="change"/>
-                    </button>
+                    <SettingsIcon style={{cursor: 'pointer'}} onClick={activateEditMode}/>
                 </div>
             }
         </div>

@@ -1,7 +1,13 @@
 .formControl textarea,
 .formControl input {
     border: 2px solid red;
+    border-radius: 4px;
+}
+.block {
+    display: flex;
+    flex-direction: column;
 }
 .error {
+    margin: -7px 2px 5px 10px;
     color: red;
 }

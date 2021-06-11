@@ -5,8 +5,8 @@ import Message from './Message/Message';
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, minLengthCreator, required} from "../../helpers/validators";
 import {Icon} from "@material-ui/core";
-import {Button, TextField} from "@material-ui/core";
-import {FormControl} from "../Common/FormControls/FormControls";
+import {Button} from "@material-ui/core";
+import {renderInput} from "../Common/FormControls/FormControls";
 
 const maxLength30 = maxLengthCreator(30);
 const minLength1 = minLengthCreator(1);
@@ -25,10 +25,6 @@ const MessageForm = props => {
             endIcon={<Icon>send</Icon>}>
             send
         </Button>)
-    }
-    const renderInput = (props) => {
-        const {input, meta, ...restProps} = props
-        return <FormControl {...props}><TextField style={{marginBottom: '10px'}} {...restProps} {...input}/></FormControl>
     }
     return (
         <form onSubmit={props.handleSubmit}>

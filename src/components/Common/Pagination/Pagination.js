@@ -2,8 +2,29 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types'
 import classes from './pagination.module.css'
 import useWindowSize from "../../../helpers/useWindowSize";
+import {IconButton, Button} from "@material-ui/core";
+import ArrowBackOutlinedIcon from '@material-ui/icons/ArrowBackOutlined';
+import ArrowForwardOutlinedIcon from '@material-ui/icons/ArrowForwardOutlined';
+
+import { makeStyles } from "@material-ui/core/styles";
+const useStyles = makeStyles({
+    root: {
+        background: '#2b3120',
+        color: '#fff',
+        borderRadius: '4px',
+        maxHeight: "36px",
+        maxWidth: '40px',
+        margin: "0 5px",
+        transition: '.2s ease-in-out',
+        '&:hover': {
+            color: '#2b3120',
+            background: '#fff'
+        }
+    }
+})
 
 const Pagination = ({totalItemsCount, itemsPerPage, onPageChange, currentPage, portionSize}) => {
+    const classes1 = useStyles();
     const widthSize = useWindowSize().width
     if (widthSize <= 850) portionSize = 5
     if (widthSize <= 450) portionSize = 4
@@ -19,24 +40,29 @@ const Pagination = ({totalItemsCount, itemsPerPage, onPageChange, currentPage, p
 
     return (
         <div className={classes.pagination}>
-            {portionNumber > 1 &&
-            <button className={classes.arrowBtn} onClick={() => setPortionNumber(portionNumber - 1)}>
-                &#129044;
-            </button>}
-            {pages.filter(page => page >= leftPagePortionNumber && page <= rightPagePortionNumber)
+            <IconButton className={classes1.root}
+                disabled={portionNumber <= 1} onClick={() => setPortionNumber(portionNumber - 1)}>
+                <ArrowBackOutlinedIcon fontSize='small'/>
+            </IconButton>
+            {pages.filter((page) => (page) >= leftPagePortionNumber && page <= rightPagePortionNumber)
                 .map(page => {
-                    return (<span
+                    return (<Button
+                        style={{
+                            background: "#fff",
+                            fontWeight: "600",
+                            margin: "0 3px",
+                            minWidth: '42px'
+                        }}
                         onClick={() => onPageChange(page)}
-                        className={currentPage === page ?
-                            `${classes.selectedPage} ${classes.pageBtn}` : classes.pageBtn} key={page}>{page}</span>)
+                        className={currentPage === page ? classes.selectedPage : ''} key={page}>{page}</Button>)
                 })}
-            {portionNumber < portionCount &&
-            <button className={classes.arrowBtn} onClick={() => setPortionNumber(portionNumber + 1)}>
-                &#129046;
-            </button>}
+            <IconButton
+                className={classes1.root}
+                disabled={portionNumber > portionCount} onClick={() => setPortionNumber(portionNumber + 1)}>
+                <ArrowForwardOutlinedIcon fontSize='small'/>
+            </IconButton>
         </div>
     )
-
 }
 
 Pagination.propTypes = {

@@ -1,40 +1,47 @@
 import React from 'react'
 import classes from './FormControls.module.css';
 import {Field} from "redux-form";
+import {TextField, Checkbox, FormControlLabel} from "@material-ui/core";
 
 export const FormControl = ({meta: {touched, error}, children}) => {
     const hasError = touched && error;
     return (
-        <>
+        <div className={classes.block}>
             <div className={hasError ? classes.formControl : ''}>
                 {children}
             </div>
             {hasError &&
-            <div>
-                <span className={classes.error}>{error}</span>
+            <div className={classes.error}>
+                {error}
             </div>}
-        </>
+        </div>
     )
 }
 
-export const Textarea = props => {
+export const renderInput = (props) => {
     const {input, meta, ...restProps} = props
-    return <FormControl {...props}><textarea {...input} {...restProps}/></FormControl>
+    return <FormControl {...props}><TextField style={{marginBottom: '10px', ...input.style}} {...input} {...restProps}/></FormControl>
 }
-export const Input = props => {
-    const {input, meta, ...restProps} = props
-    return <FormControl {...props}><input {...input} {...restProps}/></FormControl>
-}
-export const CreateField = (component, validate, name, type, placeholder, classInput= '', props={}) => {
+export const renderCheckbox = ({input, label}) => (
+    <div>
+        <FormControlLabel
+            control={
+                <Checkbox
+                    checked={!!input.value}
+                    onChange={input.onChange}
+                    style={input.style}
+                />
+            }
+            label={label}
+        />
+    </div>
+)
+export const CreateField = (component, validate, props) => {
     return (
         <>
             <Field
                 component={component}
                 validate={validate}
-                name={name}
-                type={type}
-                placeholder={placeholder}
-                className={classInput}
                 {...props}
             />
         </>

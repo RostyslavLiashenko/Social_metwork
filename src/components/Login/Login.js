@@ -1,41 +1,62 @@
 import React from "react";
-import {Field, reduxForm} from "redux-form";
-import {Input, CreateField} from "../Common/FormControls/FormControls";
+import {reduxForm} from "redux-form";
+import {CreateField, renderCheckbox} from "../Common/FormControls/FormControls";
 import {required} from "../../helpers/validators";
 import {login} from "../../Redux/auth-reducer";
 import {connect} from "react-redux";
 import {Redirect} from "react-router";
 import classes from './login.module.css';
-import s from '../Dialogs/Dialogs.module.css'
 import {Button} from "@material-ui/core";
+import {renderInput} from "../Common/FormControls/FormControls";
 
 const LoginForm = ({handleSubmit, error, captchaUrl}) => {
     return (
         <form onSubmit={handleSubmit} className={classes.formContainer}>
             <div className={classes.inputBlock}>
-                <div>Email: </div>
-                    {CreateField(Input, [required], 'email',
-                    'email', 'email', `${s.form}`)}
+                <div className={classes.email}>Email: </div>
+                {CreateField(renderInput, [required], {
+                    style: {
+                    backgroundColor: '#fff',
+                    margin: '10px',
+                },
+                    fullWidth: true,
+                    size: 'small',
+                    name: "email",
+                    variant: "outlined",
+                    type: "email",
+                    placeholder: "email",
+                })}
+
             </div>
             <div className={classes.inputBlock}>
-                <div>Password: </div>
-                    {CreateField(Input, [required], 'password',
-                    'password', 'password', `${s.form}`)}
+                <div className={classes.password}>Password: </div>
+                {CreateField(renderInput, [required], {
+                    style: {
+                    backgroundColor: '#fff',
+                    margin: '10px'
+                },
+                    fullWidth: true,
+                    size: 'small',
+                    name: "password",
+                    variant: "outlined",
+                    type: "password",
+                    placeholder: "password",
+                })}
             </div>
             <div className={classes.rememberBlock}>
-                <Field component={Input}
-                       className={classes.boxes}
-                       name={'rememberMe'}
-                       id={'remember'}
-                       type="checkbox"/>
-                <label htmlFor="remember">remember</label>
+                {CreateField(renderCheckbox, [], {
+                    name: 'rememberMe',
+                    label: 'Remember'
+                })}
             </div>
             {captchaUrl &&
             <div>
                 <img src={captchaUrl} alt="captcha"/>
                 <div>
-                    {CreateField(Input, [required], 'captcha', 'text',
-                        'symbols from image', `${s.form}`)}
+                    {CreateField(renderInput, [required], {
+                        name: 'captcha', type: 'text',
+                        placeholder: 'symbols from image',
+                    } )}
                 </div>
             </div>}
             {error && <p className={classes.formSummaryError}>

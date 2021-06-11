@@ -7,7 +7,7 @@ div.menu {
     transition: .3s ease-in-out;
 }
 div.hiddenMenu {
-    left: -100%;
+    left: -120%;
 }
 .blur {
     width: 50%;

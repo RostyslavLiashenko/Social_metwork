@@ -46,13 +46,6 @@ const ProfileInfo = ({user, status, updateUserStatus, isOwner, addPhoto}) => {
                     </Button>
                 </label>
             </div>
-                /*<div className={classes.buttonWrapper}>
-                    <span className={classes.label}>
-                        Upload File
-                    </span>
-                    <input type="file" name="upload" onChange={onMainPhotoChange}
-                           className={classes.uploadBox} placeholder="Upload File"/>
-                </div>*/
             }
             <ProfileStatus isOwner={isOwner} status={status} updateUserStatus={updateUserStatus}/>
             <ProfileData user={user}/>

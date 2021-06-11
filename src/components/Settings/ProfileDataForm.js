@@ -1,9 +1,8 @@
 import React from "react";
-import {CreateField, Input, Textarea} from "../Common/FormControls/FormControls";
+import {CreateField, renderCheckbox, renderInput} from "../Common/FormControls/FormControls";
 import {required} from "../../helpers/validators";
-import {reduxForm} from "redux-form";
+import {Field, reduxForm} from "redux-form";
 import classes from './Settings.module.css';
-import s from '../Dialogs/Dialogs.module.css'
 import {Button} from '@material-ui/core'
 import SaveIcon from '@material-ui/icons/Save'
 
@@ -16,24 +15,34 @@ const ProfileDataForm = ({handleSubmit, user, error}) => {
             </p>}
             <div>
                 <span>Full name:</span>
-                {CreateField(Input, [required], 'fullName', 'text', 'type your name', `${s.form}`)}
+                {CreateField(renderInput, [required],
+                    {name: 'fullName', type: 'text', placeholder: 'type your name'})}
             </div>
             <div className={classes.checkBox}>
-                <span>I'm looking <br/>for a new job:</span>
-                {CreateField(Input, [], 'lookingForAJob', 'checkbox', '')}
+               <Field
+                   style={{
+                       fontSize: '.9em',
+                   }}
+                    name='lookingForAJob'
+                    label="looking for a job"
+                    component={renderCheckbox}
+                />
             </div>
             <div>
                 <span>About me:</span>
-                {CreateField(Input, [], 'aboutMe', 'text', 'About me', `${s.form}`)}
+                {CreateField(renderInput, [],
+                    {name: 'aboutMe', type: 'text', placeholder: 'about me'})}
             </div>
             <div>
                 <span>Looking for a job description:</span>
-                {CreateField(Textarea, [], 'lookingForAJobDescription', 'text', 'description', `${s.form}`)}
+                {CreateField(renderInput, [],
+                    {name: 'lookingForAJobDescription', type: 'text', placeholder: 'description'})}
             </div>
             {Object.keys(user.contacts).map(key => {
                 return <div className={classes.contact} key={key}>
                     <span>{key}:</span>
-                    {CreateField(Input, [], `contacts.${key}`, 'text', `${key}`, `${s.form}`)}
+                    {CreateField(renderInput, [],
+                        {name: `contacts.${key}`, type: 'text', placeholder: `${key}`})}
                 </div>
             })}
             <div>
