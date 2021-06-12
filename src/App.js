@@ -74,9 +74,9 @@ const AppConnect = compose(withRouter, connect(mapStateToProps,
 
 const AppContainer = () => {
     return (
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
             <Provider store={store}>
-                <AppConnect/* appState={store.getState.call(store)}*//>
+                <AppConnect/>
             </Provider>
         </Router>
     )
