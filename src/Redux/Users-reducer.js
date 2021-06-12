@@ -17,7 +17,6 @@ const initialState = {
     isFetching: false,
     followingInProgress: [],
     portionSize: 10,
-    followed: ''
 }
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {

@@ -13,19 +13,21 @@ const User = ({user, followingInProgress, follow, unfollow}) => {
                          alt="ava"/>
                 </Link>
             </div>
-            {!user.followed ?
-                <button className={`${classes.btn} ${classes.effect01}`}
-                        disabled={followingInProgress.some(id => id === user.id)}
-                        onClick={() => {
-                            follow(user.id)
-                        }}>
-                    <span>follow</span></button> :
+            {user.followed ?
                 <button className={`${classes.btn} ${classes.effect01}`}
                         disabled={followingInProgress.some(id => id === user.id)}
                         onClick={() => {
                             unfollow(user.id)
                         }}>
-                    <span>unfollow</span></button>
+                    <span>unfollow</span>
+                </button> :
+                <button className={`${classes.btn} ${classes.effect01}`}
+                        disabled={followingInProgress.some(id => id === user.id)}
+                        onClick={() => {
+                            follow(user.id)
+                        }}>
+                    <span>follow</span>
+                </button>
             }
             <div>
                 <div className={classes.name}>
