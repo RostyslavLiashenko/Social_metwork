@@ -3,10 +3,12 @@ import classes from './Settings.module.css';
 import ProfileDataFormRedux from './ProfileDataForm'
 import {Redirect} from "react-router-dom";
 import {Button} from '@material-ui/core'
+import {withRouter} from "react-router";
 
-const Settings = ({user, saveProfile, path}) => {
+const Settings = ({user, saveProfile, path, ...props}) => {
     const [editMode, setEditMode] = useState(false)
     if (!user) return <Redirect to='/profile'/>
+    const hasAccess = props.authorizedUserId === user.userId
     const onSubmit = (formData) => {
         saveProfile(formData).then(() => {
             setEditMode(false)
@@ -16,11 +18,11 @@ const Settings = ({user, saveProfile, path}) => {
         <div className={classes.settingsBlock}>
             <div className={classes.settings}>Settings</div>
             {editMode ? <ProfileDataFormRedux initialValues={user} user={user} onSubmit={onSubmit}/>
-                : <ProfileData user={user} path={path} goToEditMode={() => setEditMode(true)}/>}
+                : <ProfileData user={user} hasAccess={hasAccess} path={path} goToEditMode={() => setEditMode(true)}/>}
         </div>
     )
 }
-export const ProfileData = ({user, goToEditMode, path}) => {
+export const ProfileData = ({user, goToEditMode, path, hasAccess}) => {
     let some = Object.entries(user.contacts).map(([key, value]) => {
         return (<div className={classes.contact} key={key}>
             <b>{key}:</b> {value}
@@ -46,7 +48,7 @@ export const ProfileData = ({user, goToEditMode, path}) => {
                 <span>Contacts:</span>
                 {some}
             </div>
-            {user.userId === 16749 && path === '/settings' &&
+            {hasAccess && path === '/settings' &&
             <div style={{textAlign: 'center'}}>
                 <Button
                     style={{
@@ -65,4 +67,4 @@ export const ProfileData = ({user, goToEditMode, path}) => {
         </div>
     )
 }
-export default Settings;
+export default withRouter(Settings);

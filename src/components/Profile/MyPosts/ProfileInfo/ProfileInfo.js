@@ -7,7 +7,7 @@ import {ProfileData} from "../../../Settings/Settings";
 import {Button} from "@material-ui/core";
 import {PhotoCamera} from "@material-ui/icons";
 
-const ProfileInfo = ({user, status, updateUserStatus, isOwner, addPhoto}) => {
+const ProfileInfo = ({user, status, updateUserStatus, isOwner, addPhoto, ...props}) => {
     if (!user) return <Preloader/>
     const onMainPhotoChange = (e) => {
         if (e.target.files.length) {
@@ -52,4 +52,4 @@ const ProfileInfo = ({user, status, updateUserStatus, isOwner, addPhoto}) => {
         </div>
     )
 };
-export default ProfileInfo;
+export default ProfileInfo
