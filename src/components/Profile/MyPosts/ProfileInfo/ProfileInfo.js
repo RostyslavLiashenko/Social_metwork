@@ -17,7 +17,7 @@ const ProfileInfo = ({user, status, updateUserStatus, isOwner, addPhoto}) => {
     return (
         <div className={classes.descriptionBlock}>
             <div>
-                <img src={user.photos.large ?? user.photos ?? iconUser}
+                <img src={user.photo ?? user.photos.large ?? iconUser}
                      className={classes.userPhoto}
                      alt="avatar"/>
             </div>

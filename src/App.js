@@ -2,7 +2,7 @@ import React, {Suspense} from 'react';
 import './App.css';
 import NavBarContainer from "./components/Navbar/SidebarContainer";
 import UsersContainer from "./components/users/usersContainer";
-import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
+import {HashRouter, Redirect, Route, Switch} from "react-router-dom";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 import {initializeApp} from './Redux/app-reducer';
@@ -39,7 +39,7 @@ class App extends React.Component {
                 <HeaderContainer/>
                 <NavBarContainer/>
                 <div className="app-wrapper-content">
-                    <Suspense fallback={<div>loading...</div>}>
+                    <Suspense fallback={<Preloader />}>
                         <Switch>
                             <Route path="/settings" component={SettingsContainer}/>
                             <Route path="/profile/:userId?" component={ProfileContainer}/>
@@ -74,11 +74,11 @@ const AppConnect = compose(withRouter, connect(mapStateToProps,
 
 const AppContainer = () => {
     return (
-        <Router basename={process.env.PUBLIC_URL}>
+        <HashRouter>
             <Provider store={store}>
                 <AppConnect/>
             </Provider>
-        </Router>
+        </HashRouter>
     )
 }
 export default AppContainer

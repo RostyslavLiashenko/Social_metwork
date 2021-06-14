@@ -57,7 +57,7 @@ const profileReducer = (state = initialState, action) => {
             }));
             return {
                 ...state,
-                user: {...state.user, photos: action.file},
+                user: {...state.user, photo: action.file},
                 userPosts: [...newUserPosts],
             }
         }
